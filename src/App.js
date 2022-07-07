@@ -1,17 +1,18 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import GreenButton from './components/Button';
-import NavButton from './components/NavButton';
+import FormInput from './components/FormInput';
+import FormSelect from './components/FormSelect';
 
 function App() {
   return (
     <div className="App">
-      <NavButton btnDirection="right" bgColor="bg-green text-white" />
-      <GreenButton
-        btnType="submit"
-        btnName="Reserve"
-        bgColor="bg-white text-black"
+      <FormInput
+        inputPlaceholder="Enter your name"
+        inputName="name"
+        inputType="text"
+        inputLabel="Leonardo"
       />
+      <FormSelect />
       <Routes>
         <Route path="/" element={<div>Hello</div>} />
       </Routes>

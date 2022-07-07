@@ -17,17 +17,18 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "4.x",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "redux-logger": "^3.0.6",
     "stylelint-config-standard": "21.x",
     "stylelint-csstree-validator": "1.x",
     "stylelint-scss": "3.x",
-    "web-vitals": "^2.1.0",
-    "redux-logger": "^3.0.6"
+    "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

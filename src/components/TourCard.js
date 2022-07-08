@@ -26,14 +26,14 @@ const TourCard = (props) => {
         {tourLocale}
       </p>
       <ul className="flex flex-row justify-center gap-4 pt-5">
-        <li>
-          <TiSocialFacebook />
+        <li className="border-solid border-2 rounded-full border-gray">
+          <TiSocialFacebook className="fill-gray" />
         </li>
-        <li>
-          <TiSocialTwitter />
+        <li className="border-solid border-2 rounded-full border-gray">
+          <TiSocialTwitter className="fill-gray" />
         </li>
-        <li>
-          <TiSocialInstagram />
+        <li className="border-solid border-2 rounded-full border-gray">
+          <TiSocialInstagram className="fill-gray" />
         </li>
       </ul>
     </div>

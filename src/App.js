@@ -5,9 +5,8 @@ import Homepage from './components/Homepage';
 function App() {
   return (
     <div className="App">
-      <Homepage />
       <Routes>
-        <Route path="/" />
+        <Route path="/" element={<Homepage />} />
       </Routes>
     </div>
   );

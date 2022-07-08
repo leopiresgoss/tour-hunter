@@ -10,13 +10,22 @@ const TourCard = (props) => {
   const { tourName, tourLocale, tourImage } = props;
   return (
     <div
-      className="max-w-[30%]
+      className="mx-w-[90%] md:mx-w-[30%]
     rounded overflow-hidden shadow-lgr"
     >
-      <img src={tourImage} alt="Tour" />
-      <h2>{tourName}</h2>
-      <p>{tourLocale}</p>
-      <ul className="border-t border-dashed">
+      <img
+        src={tourImage}
+        alt="Tour"
+        className="w-3/4 pb-5 mx-auto rounded-3xl"
+      />
+      <h2 className="text-center pb-5 text-black font-l font-bold">
+        {tourName}
+      </h2>
+      <hr className="w-1/4 mx-auto" />
+      <p className=" pt-5 text-center font-medium text-gray-dark">
+        {tourLocale}
+      </p>
+      <ul className="flex flex-row justify-center gap-4 pt-5">
         <li>
           <TiSocialFacebook />
         </li>

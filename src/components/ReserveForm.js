@@ -33,6 +33,8 @@ const ReserveForm = () => {
           className="flex flex-row my-auto gap-3 justify-center"
           onSubmit={handleSubmit}
         >
+          {/* Here the form select should be with text green.
+           Therefore, the formselect Coponent should modifier to accept props */}
           <FormSelect />
           <Button
             btnType="submit"

@@ -1,7 +1,7 @@
 import React from 'react';
-import FormSelect from './FormSelect';
-import Button from './Button';
-import TopNav from './TopNav';
+import FormSelect from '../components/FormSelect';
+import Button from '../components/Button';
+import TopNav from '../components/TopNav';
 
 const ReserveForm = () => {
   const handleSubmit = (e) => {
@@ -19,7 +19,7 @@ const ReserveForm = () => {
       <TopNav />
       <div className="flex flex-col mx-auto justify-center align-middle">
 
-        <h2 className="text-2xl mx-auto font-bold uppercase text-white mb-3">BOOK YOUR TOUR</h2>
+        <h2 className="text-2xl mx-auto font-bold uppercase text-white mb-3 tracking-wide md:tracking-widest">BOOK YOUR TOUR</h2>
         <hr className="border-gray w-1/2 mx-auto mb-3" />
         <p className="mx-auto text-white text-center w-full p-2 md:w-3/5 mb-10 text-sm font-semibold leading-6">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -38,8 +38,8 @@ const ReserveForm = () => {
           <FormSelect />
           <Button
             btnType="submit"
-            btnName="Reserve"
-            bgColor="bg-white text-green"
+            btnName="Reserve Now"
+            bgColor="bg-gray text-green"
           />
         </form>
       </div>

@@ -11,3 +11,15 @@
 .break-spaces {
   white-space: break-spaces;
 }
+
+/* stylelint-disable */
+@layer components {
+  .side-nav {
+    @apply flex flex-col justify-between w-1/6 h-screen border border-r-gray p-4 absolute left-0 top-0;
+  }
+  
+  .side-nav-social {
+    @apply text-3xl hover:border hover:border-2 hover:border-green rounded-full p-1;
+  }
+}
+/* stylelint-enable */

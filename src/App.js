@@ -1,11 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ReservationDetails from './pages/ReservationDetails';
 import SideNav from './components/SideNav';
 import ReserveForm from './pages/ReserveForm';
 import TopNav from './components/TopNav';
+import MyReservations from './pages/MyReservations';
+import Homepage from './pages/Homepage';
+import AdminAddTour from './pages/AdminAddTour';
+import TourDetails from './pages/TourDetails';
 import DeleteTour from './pages/DeleteTour';
-// import MyReservations from './pages/MyReservations';
 
 function App() {
   return (
@@ -14,10 +16,12 @@ function App() {
 
       <SideNav />
       <Routes>
-        <Route path="/" element={<DeleteTour />} />
-
-        <Route path="/reservations/:id" element={<ReservationDetails />} />
-        <Route path="/reserve-tour/:id" element={<ReserveForm />} />
+        <Route path="/tours" element={<Homepage />} />
+        <Route path="/reservations" element={<MyReservations />} />
+        <Route path="/tour/:id" element={<TourDetails />} />
+        <Route path="/reservation/new" element={<ReserveForm />} />
+        <Route path="/tour/new" element={<AdminAddTour />} />
+        <Route path="/tours/delete" element={<DeleteTour />} />
       </Routes>
     </div>
   );

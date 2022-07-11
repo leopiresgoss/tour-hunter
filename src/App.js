@@ -8,6 +8,7 @@ import Homepage from './pages/Homepage';
 import AdminAddTour from './pages/AdminAddTour';
 import TourDetails from './pages/TourDetails';
 import DeleteTour from './pages/DeleteTour';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <TopNav btnColor="text-green" />
       <SideNav />
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/tours" element={<Homepage />} />
         <Route path="/reservations" element={<MyReservations />} />
         <Route path="/tour/:id" element={<TourDetails />} />

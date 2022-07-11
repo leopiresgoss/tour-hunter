@@ -1,23 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-
 * {
   font-family: 'Open Sans', sans-serif;
 }
-
 .break-spaces {
   white-space: break-spaces;
 }
-
 /* stylelint-disable */
 @layer components {
   .side-nav {
-    @apply flex flex-col justify-between w-1/6 h-screen border border-r-gray p-4 absolute left-0 top-0;
+    @apply flex flex-col justify-between w-4/5 md:w-1/6 h-screen bg-white
+    border border-r-gray p-4 fixed left-0 top-0 z-10  translate-x-[-100%]
+    transform duration-500 delay-300 ease-in-out shadow-xl;
   }
-  
   .side-nav-social {
     @apply text-3xl hover:border hover:border-2 hover:border-green rounded-full p-1;
   }

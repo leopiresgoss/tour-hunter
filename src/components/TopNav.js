@@ -7,9 +7,8 @@ import Button from './Button';
 const TopNav = ({ btnColor }) => {
   const handleClick = () => {
     const nav = document.querySelector('.side-nav');
-    nav.classList.toggle('hidden');
+    nav.classList.add('translate-x-0');
   };
-
   const buttonName = <BiSearch className="text-green rotate-90 text-lg " />;
   return (
     <div className=".menu-btn w-full p-4 absolute top-0 left-0 z-10">
@@ -30,9 +29,7 @@ const TopNav = ({ btnColor }) => {
     </div>
   );
 };
-
 TopNav.propTypes = {
   btnColor: PropTypes.string.isRequired,
 };
-
 export default TopNav;

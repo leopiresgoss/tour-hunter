@@ -5,16 +5,25 @@ import Button from '../components/Button';
 import NavButton from '../components/NavButton';
 import Carousel from '../components/Carousel';
 
-const ReservationDetails = () => {
+const TourDetails = () => {
   const tour = {
     id: 3,
     name: 'Tour Title',
-    price: 660.50,
+    price: 660.5,
     date: Date.now(),
     images: [
-      { id: 1, src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80' },
-      { id: 2, src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80' },
-      { id: 3, src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80' },
+      {
+        id: 1,
+        src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80',
+      },
+      {
+        id: 2,
+        src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80',
+      },
+      {
+        id: 3,
+        src: 'https://images.unsplash.com/photo-1465778893808-9b3d1b443be4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1175&q=80',
+      },
     ],
     location: 'Rio de Janeiro',
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis sapien pharetra molestie vulputate. Curabitur condimentum blandit dui, rhoncus semper sapien dictum vitae. Etiam in mi ultrices, commodo ligula quis, efficitur erat. Donec at est scelerisque mi pharetra placerat congue a orci. Morbi porttitor non augue elementum gravida. Vivamus tempor scelerisque dignissim. Vestibulum rutrum magna at pellentesque facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam cursus venenatis odio in suscipit. Morbi vulputate sagittis consequat.
@@ -23,18 +32,22 @@ const ReservationDetails = () => {
   };
 
   return (
-    <section id="details" className="flex flex-col min-h-screen max-w-screen relative p-3">
+    <section
+      id="details"
+      className="flex flex-col min-h-screen max-w-screen relative p-3"
+    >
       <div className="flex flex-col mb-4 md:flex-row md:items-center md:justify-between">
         <div className="md:w-3/5 md:mx-auto">
           <Carousel images={tour.images} />
         </div>
         <div className="sidebar mt-4 md:w-[20%] md:flex-none">
-          <h2 className="font-semibold text-2xl md:text-4xl text-center md:text-end mb-4">{tour.name}</h2>
+          <h2 className="font-semibold text-2xl md:text-4xl text-center md:text-end mb-4">
+            {tour.name}
+          </h2>
           <ul>
             <li className="bg-gray">
               <p className="text-lg p-2">
                 Locale:
-                {' '}
                 {tour.location}
               </p>
             </li>
@@ -53,13 +66,15 @@ const ReservationDetails = () => {
               </p>
             </li>
             <li className="mt-4">
-              <p className="break-spaces">
-                {tour.description}
-              </p>
+              <p className="break-spaces">{tour.description}</p>
             </li>
             <li className="mt-4 mb-12 flex justify-end">
               <Link to="/">
-                <Button btnName="Reserve Tour" btnType="button" bgColor="bg-green text-white ml-auto" />
+                <Button
+                  btnName="Reserve Tour"
+                  btnType="button"
+                  bgColor="bg-green text-white ml-auto"
+                />
               </Link>
             </li>
           </ul>
@@ -72,4 +87,4 @@ const ReservationDetails = () => {
   );
 };
 
-export default ReservationDetails;
+export default TourDetails;

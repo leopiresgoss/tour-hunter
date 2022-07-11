@@ -1,5 +1,4 @@
 import React from 'react';
-import TopNav from '../components/TopNav';
 import TourCard from '../components/TourCard';
 
 function MyReservations() {
@@ -11,7 +10,6 @@ function MyReservations() {
         alt="reserve-form-bg"
       />
       <div className="mx-auto w-full flex flex-col p-10">
-        <TopNav />
         <h1 className="mx-auto font-bold text-2xl text-black pb-5">
           Your Reservations
         </h1>

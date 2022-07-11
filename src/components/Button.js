@@ -6,7 +6,7 @@ const Button = (props) => {
   return (
     <button
       type={btnType === 'button' ? 'button' : 'submit'}
-      className={`${bgColor} py-3 px-10 rounded-full font-semibold my-auto`}
+      className={`${bgColor} py-3 px-10 rounded-full font-semibold my-auto text-center`}
     >
       {btnName}
     </button>

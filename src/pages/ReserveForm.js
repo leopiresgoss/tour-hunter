@@ -1,7 +1,6 @@
 import React from 'react';
 import FormSelect from '../components/FormSelect';
 import Button from '../components/Button';
-import TopNav from '../components/TopNav';
 
 const ReserveForm = () => {
   const handleSubmit = (e) => {
@@ -15,7 +14,6 @@ const ReserveForm = () => {
         src="https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg"
         alt="reserve-form-bg"
       />
-      <TopNav />
       <div className="flex flex-col mx-auto justify-center align-middle">
         <h2 className="text-2xl mx-auto font-bold uppercase text-white mb-3 tracking-wide md:tracking-widest">
           BOOK YOUR TOUR

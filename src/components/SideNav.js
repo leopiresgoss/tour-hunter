@@ -1,16 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { GrFormClose } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 import LOGO from '../images/Tour-Hunter.png';
 import SocialIcons from './SocialIcons';
 
 const SideNav = () => {
+  const signedIn = useSelector((state) => state.signedIn);
+
   const Links = [
     { id: 'Home', src: 'Home', path: '/tours' },
     { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
     { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
     { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },
-    { id: 'signout', src: 'Sign Out', path: '/' },
+    { id: 'signout', src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in', path: signedIn === 'Not signed in' ? '/SignUP' : '/' },
   ];
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');

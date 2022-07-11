@@ -8,6 +8,7 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     CreateUser(formData);
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import TourCard from './TourCard';
+import TourCard from '../components/TourCard';
 
 function Homepage() {
   return (

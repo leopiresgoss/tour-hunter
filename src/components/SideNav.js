@@ -6,12 +6,11 @@ import SocialIcons from './SocialIcons';
 
 const SideNav = () => {
   const Links = [
-    { id: 'Home', src: 'Home' },
-    { id: 'Reservation', src: 'My Reservation' },
-    { id: 'Details', src: 'Details' },
-    { id: 'register', src: 'Register' },
-    { id: 'signout', src: 'Sign Out' },
-    { id: 'delete', src: 'Delete Tour' },
+    { id: 'Home', src: 'Home', path: '/tours' },
+    { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
+    { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
+    { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },
+    { id: 'signout', src: 'Sign Out', path: '/' },
   ];
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');
@@ -37,7 +36,7 @@ const SideNav = () => {
               key={link.id}
               className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
             >
-              <Link to="/" className="uppercase font-bold tracking-wider  ">
+              <Link to={link.path} className="uppercase font-bold tracking-wider  ">
                 {link.src}
               </Link>
             </li>

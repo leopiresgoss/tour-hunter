@@ -1,7 +1,6 @@
 import React from 'react';
 import Calendar from '../components/Calendar';
 import Button from '../components/Button';
-import TopNav from '../components/TopNav';
 
 const AdminAddTour = () => {
   const handleSubmit = (e) => {
@@ -16,7 +15,6 @@ const AdminAddTour = () => {
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
         style={{ backgroundImage: 'url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)' }}
       />
-      <TopNav />
       <div className="flex flex-col mx-auto justify-center align-middle">
 
         <h2 className="text-2xl mx-auto font-bold uppercase text-white mb-3">Add New Tour</h2>

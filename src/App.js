@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <TopNav btnColor="text-green" />
-
       <SideNav />
       <Routes>
         <Route path="/tours" element={<Homepage />} />

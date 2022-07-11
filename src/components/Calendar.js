@@ -11,7 +11,7 @@ const Calendar = () => {
       selected={startDate}
       onChange={(date) => setStartDate(date)}
       withPortal
-      className="py-2 px-5 rounded-full font-semibold bg-transparent text-black border-white border text-center"
+      className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border text-center w-full"
     />
   );
 };

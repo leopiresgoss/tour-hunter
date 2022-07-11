@@ -11,6 +11,7 @@ const SideNav = () => {
     { id: 'Details', src: 'Details' },
     { id: 'register', src: 'Register' },
     { id: 'signout', src: 'Sign Out' },
+    { id: 'delete', src: 'Delete Tour' },
   ];
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');

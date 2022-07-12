@@ -1,10 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Calendar from '../components/Calendar';
 import Button from '../components/Button';
 
 const AdminAddTour = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    location: '',
+    price: 0,
+    description: '',
+    images: [],
+    date: '',
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const fileSelectedHandler = (e) => {
+    setFormData({ ...formData, images: [...e.target.files] });
+  };
+
+  const handleDateChange = (e) => {
+    setFormData({ ...formData, date: e });
   };
 
   return (
@@ -24,12 +45,12 @@ const AdminAddTour = () => {
           onSubmit={handleSubmit}
         >
           <fieldset className="flex flex-col gap-4 mt-4">
-            <input type="text" name="name" placeholder="Tour Name" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
-            <input type="text" name="location" placeholder="Location" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
-            <input type="number" name="price" placeholder="Price" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
-            <textarea name="description" placeholder="Description" rows="4" className="py-2 px-5 rounded-xl font-semibold bg-transparent text-white border-white border placeholder:text-white" />
-            <input type="file" multiple accept="image/*" />
-            <Calendar />
+            <input onChange={handleChange} type="text" name="name" placeholder="Tour Name" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
+            <input onChange={handleChange} type="text" name="location" placeholder="Location" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
+            <input onChange={handleChange} type="number" name="price" placeholder="Price" className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white" />
+            <textarea onChange={handleChange} name="description" placeholder="Description" rows="4" className="py-2 px-5 rounded-xl font-semibold bg-transparent text-white border-white border placeholder:text-white" />
+            <input onInput={fileSelectedHandler} name="images" type="file" multiple="multiple" accept="image/*" />
+            <Calendar handleDateChange={handleDateChange} />
           </fieldset>
           <Button
             btnType="submit"

@@ -13,7 +13,12 @@ const SideNav = () => {
     { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
     { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
     { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },
-    { id: 'signout', src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in', path: signedIn === 'Not signed in' ? '/SignUP' : '/' },
+    {
+      id: 'signout',
+      src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in',
+      path: signedIn === 'Not signed in' ? '/SignUP' : '/',
+    },
+    { id: 'signin', src: 'Sign In', path: '/users/sign_in' },
   ];
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');
@@ -39,7 +44,11 @@ const SideNav = () => {
               key={link.id}
               className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
             >
-              <Link to={link.path} className="uppercase font-bold tracking-wider  ">
+              <Link
+                to={link.path}
+                className="uppercase font-bold tracking-wider  "
+                onClick={hideSideBar}
+              >
                 {link.src}
               </Link>
             </li>

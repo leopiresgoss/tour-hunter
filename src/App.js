@@ -17,7 +17,7 @@ function App() {
       <TopNav btnColor="text-green" />
       <SideNav />
       <Routes>
-        <Route path="/sign_in" element={<SignIn />} />
+        <Route path="/users/sign_in" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/tours" element={<Homepage />} />
         <Route path="/reservations" element={<MyReservations />} />

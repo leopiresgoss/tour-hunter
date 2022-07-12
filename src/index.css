@@ -22,5 +22,9 @@
   .side-nav-social {
     @apply text-3xl hover:border hover:border-2 hover:border-green rounded-full p-1;
   }
+
+  .form-input {
+    @apply py-3 px-5 rounded-full font-semibold bg-transparent text-black border-green border;
+  }
 }
 /* stylelint-enable */

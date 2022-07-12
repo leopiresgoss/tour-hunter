@@ -13,7 +13,7 @@ const CreateUser = async (formData) => {
     .then((result) => {
       if (result === '{"message":"Signed up."}') {
         store.dispatch(updateSignedInStatus('Waiting for confirmation'));
-        window.location.href = '/';
+        window.location.href = 'http://localhost:3000/tours';
       } else {
         console.log(result);
       }

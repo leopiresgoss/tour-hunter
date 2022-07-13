@@ -17,6 +17,7 @@ const SignInUser = async (formData) => {
   localStorage.setItem('user', JSON.stringify(userData));
   store.dispatch(GET_USER_DATA(userData));
   store.dispatch(CHANGE_USER_STATUS('LOGGED'));
+  window.location.href = 'http://127.0.0.1:3001/tours';
 };
 
 export default SignInUser;

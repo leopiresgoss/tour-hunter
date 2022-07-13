@@ -16,7 +16,7 @@ const SideNav = () => {
     {
       id: 'signout',
       src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in',
-      path: signedIn === 'Not signed in' ? '/SignUP' : '/',
+      path: signedIn === 'Not signed in' ? '/signup' : '/',
     },
     { id: 'signin', src: 'Sign In', path: '/users/sign_in' },
   ];

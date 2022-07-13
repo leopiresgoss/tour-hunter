@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  userData: {
+    token: null,
+    role: 'guest',
+  },
+  signIn_status: 'Not Signed In',
+};
+
 /* eslint no-param-reassign: "error" */
 export const tokenSlice = createSlice({
   name: 'token',
-  initialState: {
-    userData: {
-      token: null,
-      role: 'guest',
-    },
-    signIn_status: 'Not Signed In',
-  },
+  initialState,
   reducers: {
     GET_USER_DATA: (state, action) => {
       state.userData = action.payload;

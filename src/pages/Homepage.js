@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import getAPIdata from '../redux/reducers/tours';
 import TourCard from '../components/TourCard';
 import FlashMessage from '../components/FlashMessage';
 
 function Homepage() {
   const signedIn = useSelector((state) => state.signedIn);
+  const [tours, setTours] = useState([]);
+
+  useEffect(() => {
+    let mounted = true;
+    getAPIdata().then((items) => {
+      if (mounted) {
+        setTours(items);
+      }
+    });
+    return () => {
+      mounted = false;
+    };
+  });
   return (
     <section className="mx-auto w-screen">
       <div className="mx-auto w-full flex flex-col p-10">
@@ -12,18 +26,9 @@ function Homepage() {
         <p className="mx-auto text-gray-dark">Please select one of our tours</p>
       </div>
       <div className="w-full flex flex-col gap-24">
-        <TourCard
-          tourName="Eiffel Tower"
-          tourImage="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-          tourLocale="Paris"
-        />
-        <TourCard
-          tourName="Eiffel Tower"
-          tourImage="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-          tourLocale="Paris"
-        />
+        <TourCard tours={tours} />
       </div>
-      {(signedIn === 'Waiting for confirmation') && (
+      {signedIn === 'Waiting for confirmation' && (
         <FlashMessage
           title="Waiting for confirmation"
           className="text-orange"

@@ -1,16 +1,24 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { GrFormClose } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 import LOGO from '../images/Tour-Hunter.png';
 import SocialIcons from './SocialIcons';
 
 const SideNav = () => {
+  const signedIn = useSelector((state) => state.signedIn);
+
   const Links = [
     { id: 'Home', src: 'Home', path: '/tours' },
     { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
     { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
     { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },
-    { id: 'signout', src: 'Sign Out', path: '/' },
+    {
+      id: 'signout',
+      src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in',
+      path: signedIn === 'Not signed in' ? '/signup' : '/',
+    },
+    { id: 'signin', src: 'Sign In', path: '/users/sign_in' },
   ];
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');
@@ -36,7 +44,11 @@ const SideNav = () => {
               key={link.id}
               className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
             >
-              <Link to={link.path} className="uppercase font-bold tracking-wider  ">
+              <Link
+                to={link.path}
+                className="uppercase font-bold tracking-wider  "
+                onClick={hideSideBar}
+              >
                 {link.src}
               </Link>
             </li>

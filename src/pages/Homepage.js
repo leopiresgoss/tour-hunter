@@ -1,7 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import TourCard from '../components/TourCard';
+import FlashMessage from '../components/FlashMessage';
 
 function Homepage() {
+  const signedIn = useSelector((state) => state.signedIn);
   return (
     <section className="mx-auto w-screen">
       <div className="mx-auto w-full flex flex-col p-10">
@@ -20,6 +23,13 @@ function Homepage() {
           tourLocale="Paris"
         />
       </div>
+      {(signedIn === 'Waiting for confirmation') && (
+        <FlashMessage
+          title="Waiting for confirmation"
+          className="text-orange"
+          message="You will receive an email shortly containing an activation link. If you didn't receive the email please check your spam folder."
+        />
+      )}
     </section>
   );
 }

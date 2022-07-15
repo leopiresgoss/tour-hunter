@@ -30,12 +30,12 @@ const DeleteTour = () => {
             className="flex flex-col py-2 px-4"
           >
             <div className="grid grid-cols-12 p-3 mb-2 border border-gray rounded items-center">
-              <span className="col-span-2">{index + 1}</span>
+              <span className="col-span-1 md:col-span-2">{index + 1}</span>
               <p className="col-span-8">{tour.name}</p>
               {tour.available && (
                 <button
                   type="submit"
-                  className="p-2 bg-red text-white text-sm rounded col-span-2 md:col-span-1"
+                  className="p-2 bg-red text-white text-sm col-span-3 rounded md:col-span-1"
                 >
                   Delete
                 </button>

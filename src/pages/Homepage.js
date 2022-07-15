@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import getAPIdata from '../redux/reducers/tours';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TourCard from '../components/TourCard';
 import FlashMessage from '../components/FlashMessage';
+import { homepageTourAPI } from '../redux/reducers/homepageTours';
 
 function Homepage() {
   const signedIn = useSelector((state) => state.signedIn);
-  const [tours, setTours] = useState([]);
-
+  const dispatch = useDispatch();
+  const tours = useSelector((state) => state.home.tours);
   useEffect(() => {
-    let mounted = true;
-    getAPIdata().then((items) => {
-      if (mounted) {
-        setTours(items);
-      }
-    });
-    return () => {
-      mounted = false;
-    };
-  });
+    dispatch(homepageTourAPI());
+  }, []);
   return (
     <section className="mx-auto w-screen">
       <div className="mx-auto w-full flex flex-col p-10">
@@ -26,7 +18,14 @@ function Homepage() {
         <p className="mx-auto text-gray-dark">Please select one of our tours</p>
       </div>
       <div className="w-full flex flex-col gap-24">
-        <TourCard tours={tours} />
+        {tours.map((tour) => (
+          <TourCard
+            key={tour.id}
+            tourName={tour.name}
+            tourLocale={tour.localtion}
+            tourImage={tour.image_urls[0]}
+          />
+        ))}
       </div>
       {signedIn === 'Waiting for confirmation' && (
         <FlashMessage

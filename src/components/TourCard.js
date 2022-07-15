@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   TiSocialFacebook,
   TiSocialInstagram,
@@ -6,23 +7,23 @@ import {
 } from 'react-icons/ti';
 
 const TourCard = (props) => {
-  props.tours.map((tours) => (
+  const { tourName, tourLocale, tourImage } = props;
+  return (
     <div
       className="mx-w-[90%] md:mx-w-[30%]
-  rounded overflow-hidden shadow-lgr"
-      key={tours.id}
+    rounded overflow-hidden shadow-lgr"
     >
       <img
-        src={tours.image}
+        src={tourImage}
         alt="Tour"
         className="w-3/4 pb-5 mx-auto rounded-3xl"
       />
       <h2 className="text-center pb-5 text-black font-l font-bold">
-        {tours.name}
+        {tourName}
       </h2>
       <hr className="w-1/4 mx-auto" />
       <p className=" pt-5 text-center font-medium text-gray-dark">
-        {tours.location}
+        {tourLocale}
       </p>
       <ul className="flex flex-row justify-center gap-4 pt-5">
         <li className="border-solid border-2 rounded-full border-gray">
@@ -36,7 +37,13 @@ const TourCard = (props) => {
         </li>
       </ul>
     </div>
-  ));
+  );
 };
 
 export default TourCard;
+
+TourCard.propTypes = {
+  tourName: PropTypes.string.isRequired,
+  tourLocale: PropTypes.string.isRequired,
+  tourImage: PropTypes.string.isRequired,
+};

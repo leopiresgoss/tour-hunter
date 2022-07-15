@@ -15,10 +15,10 @@ const CreateUser = async (formData) => {
         store.dispatch(updateSignedInStatus('Waiting for confirmation'));
         window.location.href = 'http://localhost:3001/tours';
       } else {
-        console.log(result);
+        console.log(result); //eslint-disable-line
       }
     })
-    .catch((error) => console.log('error', error));
+    .catch((error) => console.log('error', error));  //eslint-disable-line
 };
 
 export default CreateUser;

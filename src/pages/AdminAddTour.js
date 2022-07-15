@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Calendar from '../components/Calendar';
 import Button from '../components/Button';
+import { addTour } from '../redux/reducers/tours';
 
 const AdminAddTour = () => {
+  const token = useSelector((state) => state.token.userData.token);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
     location: '',
     price: 0,
     description: '',
     images: [],
-    date: '',
+    date: [],
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addTour({ token, formData }));
   };
 
   const handleChange = (e) => {

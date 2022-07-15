@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import deleteTourAPI from '../../api/deleteTour';
+import addTourAPI from '../../api/addTour';
 
 export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
   const response = await axios.get('https://tourhunterapi.herokuapp.com/tours');
@@ -16,6 +17,13 @@ export const deleteTour = createAsyncThunk(
       return { id };
     }
     return rejectWithValue("You don't have enough permissions");
+  },
+);
+
+export const addTour = createAsyncThunk(
+  'tours/addTour',
+  async ({ token, formData }) => {
+    await addTourAPI(token, formData);
   },
 );
 
@@ -55,6 +63,12 @@ export const tours = createSlice({
       state.status = 'Deleted';
     },
     [deleteTour.rejected]: (state) => {
+      state.status = 'Failed';
+    },
+    [addTour.fulfilled]: (state) => {
+      state.status = 'Added';
+    },
+    [addTour.rejected]: (state) => {
       state.status = 'Failed';
     },
   },

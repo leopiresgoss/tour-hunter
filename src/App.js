@@ -21,14 +21,17 @@ function App() {
 
     if (data) {
       dispatch(GET_USER_DATA(data));
-      dispatch(CHANGE_USER_STATUS('LOGGED'));
+      dispatch(CHANGE_USER_STATUS(true));
     }
   }, []);
+
   return (
     <div className="App">
       <TopNav btnColor="text-green" />
       <SideNav />
+
       <Routes>
+        <Route path="/tours" element={<Homepage />} />
         <Route path="/users/sign_in" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<Homepage />} />

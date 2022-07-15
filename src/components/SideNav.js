@@ -1,12 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { GrFormClose } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 import LOGO from '../images/Tour-Hunter.png';
 import SocialIcons from './SocialIcons';
+import signOutUser from '../api/SignOut';
+import { signOut } from '../redux/reducers/token';
 
 const SideNav = () => {
+  const dispatch = useDispatch();
   const signedIn = useSelector((state) => state.signedIn);
+  const user = useSelector((state) => state.token).userData || JSON.parse(localStorage.getItem('user'));
 
   const Links = [
     { id: 'Home', src: 'Home', path: '/' },
@@ -20,10 +24,19 @@ const SideNav = () => {
     },
     { id: 'signin', src: 'Sign In', path: '/users/sign_in' },
   ];
+
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');
     nav.classList.remove('translate-x-0');
   };
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    dispatch(signOut());
+    localStorage.removeItem('user');
+    signOutUser(user);
+  };
+
   return (
     <div className="side-nav" onMouseLeave={hideSideBar}>
       <Link to="/" className="p-0 mt-4 -ml-5">
@@ -54,6 +67,9 @@ const SideNav = () => {
             </li>
           ))}
         </ul>
+        <button type="submit" className="btn-green" onClick={handleSignOut}>
+          SignOut
+        </button>
       </nav>
       <SocialIcons />
     </div>

@@ -1,13 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import reserveTour from '../api/reservationCall';
+import { createSlice } from '@reduxjs/toolkit';
+import makeReservation from '../../api/ReserveTour';
 
 /* eslint no-param-reassign: "error" */
-
-export const makeReservation = createAsyncThunk(
-  'reservation/postReservation',
-  reserveTour(),
-);
-
 export const reservationSlice = createSlice({
   name: 'reservation',
   initialState: {
@@ -15,7 +9,7 @@ export const reservationSlice = createSlice({
     status: null,
   },
   reducers: {
-    SETPACKAGE: (state, action) => {
+    setPackage: (state, action) => {
       state.package = action.payload;
     },
   },
@@ -33,5 +27,5 @@ export const reservationSlice = createSlice({
   },
 });
 
-export const { SETPACKAGE } = reservationSlice.actions;
+export const { setPackage } = reservationSlice.actions;
 export default reservationSlice.reducer;

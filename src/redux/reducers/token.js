@@ -5,7 +5,7 @@ const initialState = {
     token: null,
     role: 'guest',
   },
-  signIn_status: 'Not Signed In',
+  isSignedIn: false,
 };
 
 /* eslint no-param-reassign: "error" */
@@ -17,10 +17,18 @@ export const tokenSlice = createSlice({
       state.userData = action.payload;
     },
     CHANGE_USER_STATUS: (state, action) => {
-      state.signIn_status = action.payload;
+      state.isSignedIn = action.payload;
+    },
+
+    signOut: (state) => {
+      state.userData = {
+        token: null,
+        role: 'guest',
+      };
+      state.isSignedIn = false;
     },
   },
 });
 
-export const { GET_USER_DATA, CHANGE_USER_STATUS } = tokenSlice.actions;
+export const { GET_USER_DATA, CHANGE_USER_STATUS, signOut } = tokenSlice.actions;
 export default tokenSlice.reducer;

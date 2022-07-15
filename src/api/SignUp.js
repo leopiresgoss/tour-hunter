@@ -4,7 +4,7 @@ import store from '../redux/store';
 const CreateUser = async (formData) => {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
-  await fetch('http://localhost:3000/users', {
+  await fetch('https://tourhunterapi.herokuapp.com/users', {
     method: 'POST',
     headers: myHeaders,
     body: JSON.stringify({ user: formData }),

@@ -20,11 +20,66 @@
     transform duration-500 delay-300 ease-in-out shadow-xl;
   }
   .side-nav-social {
-    @apply text-3xl hover:border hover:border-2 hover:border-green rounded-full p-1;
+    @apply text-3xl  hover:border-2 hover:border-green rounded-full p-1;
   }
 
   .form-input {
     @apply py-3 px-5 rounded-full font-semibold bg-transparent text-black border-green border;
+  }
+
+  .btn-green {
+    @apply text-white mt-5 bg-red py-1 px-5 rounded font-semibold my-auto text-center;
+  }
+
+  .dropdown-button {
+    @apply  
+    px-6
+    py-3
+    bg-transparent
+    text-white
+    border-2 border-white
+    font-medium
+    text-sm
+    leading-tight
+    uppercase
+    rounded-full
+    shadow-md
+    hover:bg-transparent hover:shadow-lg
+    focus:bg-transparent focus:shadow-lg focus:outline-none focus:ring-0
+    active:bg-transparent active:shadow-lg active:text-white
+    transition
+    duration-150
+    ease-in-out
+    flex
+    items-center
+    whitespace-nowrap
+    min-w-[180px]   
+  }
+  
+  .dropdown-items {
+    @apply 
+    min-w-max
+    absolute
+    /* hidden */
+    bg-white
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1   
+    m-0
+    bg-clip-padding
+    border-none
+  }
+
+  .dropdown-list-item {
+    @apply 
+    text-sm py-2 px-4 font-normal block w-full 
+    whitespace-nowrap bg-transparent text-gray-dark hover:bg-gray;    
   }
 }
 /* stylelint-enable */

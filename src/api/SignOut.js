@@ -10,7 +10,7 @@ const signOutUser = (user) => {
     if (response.status === 200) {
       localStorage.removeItem('user');
     }
-  }).catch((error) => console.log('error', error));
+  }).catch((error) => console.log('error', error)); //eslint-disable-line
 };
 
 export default signOutUser;

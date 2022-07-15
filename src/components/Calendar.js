@@ -18,7 +18,7 @@ const Calendar = ({ handleDateChange }) => {
       selected={startDate}
       onChange={(e) => handleChange(e)}
       withPortal
-      className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border text-center w-full"
+      className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border text-center w-full placeholder:text-white"
     />
   );
 };

@@ -30,11 +30,11 @@ const addTourAPI = async (token, formData) => {
     formdata.append('images[]', formData.images[i], el);
   });
 
-  formdata.append('tour_dates_attributes[0][date]', formData.date);
+  // formdata.append('tour_dates_attributes[0][date]', formData.date);
 
-  // formData.date.forEach((el, i) => {
-  //   formdata.append(`tour_dates_attributes[${i}][date]`, el);
-  // });
+  formData.date.forEach((el, i) => {
+    formdata.append(`tour_dates_attributes[${i}][date]`, el);
+  });
 
   const requestOptions = {
     method: 'POST',

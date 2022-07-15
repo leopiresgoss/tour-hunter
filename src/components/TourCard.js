@@ -10,7 +10,7 @@ const TourCard = (props) => {
   const { tourName, tourLocale, tourImage } = props;
   return (
     <div
-      className="mx-w-[90%] md:mx-w-[30%]
+      className=" md:max-w-xs
     rounded overflow-hidden shadow-lgr"
     >
       <img

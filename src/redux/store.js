@@ -4,6 +4,7 @@ import usersReducer from './reducers/users';
 import reservationReducer from './reducers/reservation';
 import tokenReducer from './reducers/token';
 import toursReducer from './reducers/tours';
+import hometourReducer from './reducers/homepageTours';
 import tourReducer from './reducers/tour';
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     reservation: reservationReducer,
     token: tokenReducer,
     tours: toursReducer,
+    home: hometourReducer,
     tour: tourReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),

@@ -34,6 +34,7 @@ function App() {
         <Route path="/tours" element={<Homepage />} />
         <Route path="/users/sign_in" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/reservations" element={<MyReservations />} />
         <Route path="/tour/:id" element={<TourDetails />} />
         <Route path="/reservation/new" element={<ReserveForm />} />

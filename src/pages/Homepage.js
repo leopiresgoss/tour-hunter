@@ -9,7 +9,7 @@ import NavButton from '../components/NavButton';
 function Homepage() {
   const signedIn = useSelector((state) => state.signedIn);
   const dispatch = useDispatch();
-  const tours = useSelector((state) => state.home.tours);
+  const tours = useSelector((state) => state.home.tours.filter((t) => t.visible === true));
   useEffect(() => {
     dispatch(homepageTourAPI());
   }, []);

@@ -7,7 +7,7 @@
 }
 
 .header-alert {
-  background-color:  #e2adb2;
+  background-color: #e2adb2;
 }
 
 .header-success {
@@ -19,7 +19,7 @@
 }
 
 .icon-alert {
-  color: #f44336 ; 
+  color: #f44336;
 }
 
 .icon-warning {
@@ -31,7 +31,7 @@
 }
 
 .title-info {
-  color:#185eb4;
+  color: #185eb4;
 }
 
 .title-alert {
@@ -51,5 +51,5 @@
 }
 
 .message-black {
-  color: black
+  color: black;
 }

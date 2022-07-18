@@ -1,0 +1,55 @@
+.header-info {
+  background-color: #a5c8f3;
+}
+
+.header-warning {
+  background-color: #eecb96;
+}
+
+.header-alert {
+  background-color:  #e2adb2;
+}
+
+.header-success {
+  background-color: #9fe69f;
+}
+
+.icon-info {
+  color: #262f85;
+}
+
+.icon-alert {
+  color: #f44336 ; 
+}
+
+.icon-warning {
+  color: #ff9800;
+}
+
+.icon-success {
+  color: #06860a;
+}
+
+.title-info {
+  color:#185eb4;
+}
+
+.title-alert {
+  color: #b41828;
+}
+
+.title-warning {
+  color: #b97105;
+}
+
+.title-success {
+  color: #0b580b;
+}
+
+.message-white {
+  color: white;
+}
+
+.message-black {
+  color: black
+}

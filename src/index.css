@@ -15,8 +15,8 @@
 /* stylelint-disable */
 @layer components {
   .side-nav {
-    @apply flex flex-col justify-between w-4/5 md:w-1/6 h-screen bg-white
-    border border-r-gray p-4 fixed left-0 top-0 z-10  translate-x-[-100%]
+    @apply flex flex-col justify-between w-4/5 md:w-2/5 lg:w-1/5 h-screen bg-white
+    border border-r-gray p-4 fixed left-0 top-0 z-[1000]  translate-x-[-100%]
     transform duration-500 delay-300 ease-in-out shadow-xl;
   }
   .side-nav-social {
@@ -81,5 +81,29 @@
     text-sm py-2 px-4 font-normal block w-full 
     whitespace-nowrap bg-transparent text-gray-dark hover:bg-gray;    
   }
+
+/* Flash Messages */
+.flash-message {
+  @apply  flex flex-col rounded min-w-[80%] md:max-w-[35%] border z-[100] border-gray shadow-xl;
+}
+
+
+.message-header {
+ @apply  w-full flex flex-row gap-2 py-1 drop-shadow-md bg-opacity-40;
+}
+
+
+.message-header-icon {
+  @apply block pr-2 border-r my-auto text-2xl;
+}
+
+
+.message-header-title {
+  @apply block font-bold text-sm capitalize my-auto;
+}
+
+.message-content {
+  @apply font-medium text-justify p-2 min-h-[50px] text-sm py-1 ;
+}
 }
 /* stylelint-enable */

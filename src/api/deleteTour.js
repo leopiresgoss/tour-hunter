@@ -10,7 +10,7 @@ const deleteTourAPI = async (token, id) => {
   };
 
   return fetch(
-    `http://127.0.0.1:3000/tours/${id}`,
+    `https://tourhunterapi.herokuapp.com/tours/${id}`,
     requestOptions,
   )
     .then((response) => response.text())

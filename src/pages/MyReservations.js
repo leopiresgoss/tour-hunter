@@ -10,7 +10,6 @@ function MyReservations() {
     dispatch(getReservations());
   },
   []);
-  console.log(reservations);
 
   return (
     <section className="mx-auto w-screen relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">

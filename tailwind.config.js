@@ -55,16 +55,15 @@ module.exports = {
         500: '#b4b418',
         600: '#87871e',
       },
-
-      fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
-      },
     },
 
-    plugins: [
-    // eslint-disable-next-line global-require
-      require('tw-elements/dist/plugin'),
-    ],
+    fontFamily: {
+      sans: ['Graphik', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    },
   },
+  plugins: [
+    // eslint-disable-next-line global-require
+    require('tw-elements/dist/plugin'),
+  ],
 };

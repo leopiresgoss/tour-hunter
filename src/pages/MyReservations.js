@@ -26,11 +26,20 @@ function MyReservations() {
         <hr className="w-1/4 mx-auto" />
       </div>
       <div className="w-full flex flex-col gap-24">
-        <TourCard
-          tourName="Eiffel Tower"
-          tourImage="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-          tourLocale="Paris"
-        />
+        {
+          reservations.map((reservation) => (
+            <TourCard
+              key={reservation.reseravation_id}
+              tourName={reservation.tour_name}
+              tourImage={reservation.tour_images[0]}
+              tourLocale={reservation.tour_location}
+              tourDate={reservation.tour_date}
+              tourPackage={reservation.package}
+
+            />
+          ))
+        }
+
       </div>
     </section>
   );

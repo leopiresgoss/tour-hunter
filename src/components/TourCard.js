@@ -7,7 +7,9 @@ import {
 } from 'react-icons/ti';
 
 const TourCard = (props) => {
-  const { tourName, tourLocale, tourImage } = props;
+  const {
+    tourName, tourLocale, tourImage, tourPackage, tourDate,
+  } = props;
   return (
     <div
       className="mx-w-[90%] md:mx-w-[30%]
@@ -22,9 +24,19 @@ const TourCard = (props) => {
         {tourName}
       </h2>
       <hr className="w-1/4 mx-auto" />
-      <p className=" pt-5 text-center font-medium text-gray-dark">
-        {tourLocale}
-      </p>
+      <div className="flex flex-col flex-wrap text-center gap-3 pt-5">
+        <p className="font-medium text-white">
+          {`Location: ${tourLocale}`}
+        </p>
+
+        <p className="font-medium text-white">
+          {`Tour Date: ${tourDate}`}
+        </p>
+        <p className="font-medium text-white">
+          {`Tour Package: ${tourPackage}`}
+        </p>
+      </div>
+
       <ul className="flex flex-row justify-center gap-4 pt-5">
         <li className="border-solid border-2 rounded-full border-gray">
           <TiSocialFacebook className="fill-gray" />
@@ -46,4 +58,6 @@ TourCard.propTypes = {
   tourName: PropTypes.string.isRequired,
   tourLocale: PropTypes.string.isRequired,
   tourImage: PropTypes.string.isRequired,
+  tourDate: PropTypes.string.isRequired,
+  tourPackage: PropTypes.string.isRequired,
 };

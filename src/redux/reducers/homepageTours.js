@@ -31,40 +31,51 @@ export const hometourSlice = createSlice({
   reducers: {
     updateRightTours: (state) => {
       // remove visible tours
-      if (state.tours.length > state.start_point + 1) {
+      if (state.tours.length > state.startPoint + 3) {
         state.tours[state.startPoint].visible = false;
-        state.start_point += 1;
+        state.startPoint += 1;
         // put visible in the next 3 tours
         state.tours[state.startPoint].visible = true;
         state.tours[state.startPoint + 1].visible = true;
         state.tours[state.startPoint + 2].visible = true;
       }
     },
-    extraReducers: {
-      [homepageTourAPI.pending]: (state) => {
-        state.status = 'Loading';
-      },
-      [homepageTourAPI.fulfilled]: (state, action) => {
-        state.tours = action.payload.map((tour, index) => {
-          if (index < 3) {
-            return {
-              ...tour,
-              visible: true,
-            };
-          }
+    updateLeftTours: (state) => {
+      // remove visible tours
+      if (state.startPoint > 0) {
+        state.tours[state.startPoint + 2].visible = false;
+        state.startPoint -= 1;
+        // put visible in the next 3 tours
+        state.tours[state.startPoint].visible = true;
+        state.tours[state.startPoint + 1].visible = true;
+        state.tours[state.startPoint + 2].visible = true;
+      }
+    },
+  },
+  extraReducers: {
+    [homepageTourAPI.pending]: (state) => {
+      state.status = 'Loading';
+    },
+    [homepageTourAPI.fulfilled]: (state, action) => {
+      state.tours = action.payload.map((tour, index) => {
+        if (index < 3) {
           return {
             ...tour,
-            visible: false,
+            visible: true,
           };
-        });
-        state.status = 'Success';
-      },
-      [homepageTourAPI.rejected]: (state) => {
-        state.status = 'Failed';
-      },
+        }
+        return {
+          ...tour,
+          visible: false,
+        };
+      });
+      state.status = 'Success';
+    },
+    [homepageTourAPI.rejected]: (state) => {
+      state.status = 'Failed';
     },
   },
 });
 
-export const { updateRightTours } = hometourSlice.actions;
+export const { updateRightTours, updateLeftTours } = hometourSlice.actions;
 export default hometourSlice.reducer;

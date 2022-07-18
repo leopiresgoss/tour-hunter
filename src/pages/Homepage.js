@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import TourCard from '../components/TourCard';
 import FlashMessage from '../components/FlashMessage';
+import Message from '../components/Message';
+
 import {
   homepageTourAPI,
   updateRightTours,
@@ -22,6 +24,13 @@ function Homepage() {
   }, []);
   return (
     <section className="mx-auto w-screen">
+      <Message
+        message="Sample Message"
+        type="success"
+        color="black"
+        duration={10000}
+        title="Success"
+      />
       <div className="mx-auto w-full flex flex-col p-10 mt-10 md:mt-0">
         <h1 className="mx-auto font-bold text-2xl text-black md:mt-[100px]">
           Our Tours

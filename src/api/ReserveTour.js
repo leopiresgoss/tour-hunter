@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 const makeReservation = createAsyncThunk(
   'reservation/postReservation',
   async (tourPackage) => {
+    console.log(tourPackage);
     const response = await fetch('https://tourhunterapi.herokuapp.com/reservations', {
       method: 'POST',
       headers: {
@@ -13,6 +14,7 @@ const makeReservation = createAsyncThunk(
       body: JSON.stringify(tourPackage),
     });
     const data = await response.json();
+    console.log(data);
     return data;
   },
 );

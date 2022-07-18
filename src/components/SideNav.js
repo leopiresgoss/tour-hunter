@@ -13,7 +13,7 @@ const SideNav = () => {
   const user = useSelector((state) => state.token).userData || JSON.parse(localStorage.getItem('user'));
 
   const Links = [
-    { id: 'Home', src: 'Home', path: '/' },
+    { id: 'Home', src: 'Home', path: '/tours' },
     { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
     { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
     { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },

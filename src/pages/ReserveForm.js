@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import Button from '../components/Button';
 import makeReservation from '../api/ReserveTour';
 import DropDown from '../components/DropDown';
+import Message from '../components/Message';
 
 const ReserveForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { tourDetail } = useSelector((state) => state.tour);
+  const success = useSelector((state) => state.reservation.package.status);
+  const [showMessage, setShowMessage] = useState({
+    type: null,
+    message: null,
+    title: null,
+  });
+
   const [tourPackage, setTourPackage] = useState({
     tour_date_id: '',
     package: '',
+  });
+
+  const tourDates = [];
+  tourDetail.tour_dates.forEach((tourDate) => {
+    tourDates.push({
+      id: tourDate.id,
+      item: tourDate.date,
+    });
   });
 
   const handleChange = (e, id) => {
@@ -16,7 +36,6 @@ const ReserveForm = () => {
       setTourPackage({
         ...tourPackage,
         tour_date_id: id,
-
       });
     } else {
       setTourPackage({
@@ -29,23 +48,44 @@ const ReserveForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(makeReservation(tourPackage));
+
+    if (success === 'Success') {
+      setShowMessage({
+        type: 'success',
+        message: 'Your reservation has been made successfully!',
+        title: 'Success',
+      });
+      setTimeout(() => {
+        navigate(-1);
+      }, 1000);
+    } else {
+      setShowMessage({
+        type: 'alert',
+        message: 'Your reservation has failed!',
+        title: 'Failed',
+      });
+    }
   };
 
   const packageOptions = [
-    { id: 1, option: 'Standard' },
-    { id: 2, option: 'VIP' },
-    { id: 3, option: 'Luxury' },
-  ];
-
-  const tourDates = [
-    { id: 1, option: '1/1/2020' },
-    { id: 2, option: '1/2/2020' },
-    { id: 3, option: '1/3/2020' },
-    { id: 4, option: '1/4/2020' },
+    { id: 1, item: 'Standard' },
+    { id: 2, item: 'VIP' },
+    { id: 3, item: 'Luxury' },
   ];
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">
+
+      {showMessage.message && (
+      <Message
+        message={showMessage.message}
+        position="absolute top-16 right-10 md:top-16 :right-10"
+        type={showMessage.type}
+        color="white"
+        duration={5000}
+        title={showMessage.title || 'Information'}
+      />
+      )}
 
       <img
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"
@@ -54,15 +94,20 @@ const ReserveForm = () => {
       />
 
       <div className="flex flex-col mx-auto justify-center align-middle">
-        <h2 className="text-2xl mx-auto font-bold uppercase text-white mb-3 tracking-wide md:tracking-widest">BOOK YOUR TOUR</h2>
+        <h2 className="text-2xl mx-auto font-bold uppercase
+        text-white mb-3 tracking-wide md:tracking-widest"
+        >
+          {
+            `Book ${tourDetail.name}`
+          }
+
+        </h2>
 
         <hr className="border-gray w-1/2 mx-auto mb-3" />
-        <p className="mx-auto text-white text-center w-full p-2 md:w-3/5 mb-10 text-sm font-semibold leading-6">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua..
+        <p className="mx-auto text-white text-center w-full
+        p-2 md:w-3/5 mb-10 text-sm font-semibold leading-6  max-h-[100px] overflow-hidden py-1"
+        >
+          {tourDetail.description}
         </p>
 
         <form
@@ -78,6 +123,7 @@ const ReserveForm = () => {
             btnName="Reserve Now"
             bgColor="bg-gray text-green w-2/3 mt-4 mx-auto"
           />
+
         </form>
 
       </div>

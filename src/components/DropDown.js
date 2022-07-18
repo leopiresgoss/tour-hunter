@@ -62,10 +62,11 @@ const DropDown = (props) => {
           {options.map((option) => (
             <li
               key={option.id}
+              id={option.id}
               onClickCapture={(e) => chooseOption(e, option.id)}
               className="dropdown-list-item"
             >
-              {option.option}
+              {option.item}
             </li>
           ))}
         </ul>
@@ -82,7 +83,7 @@ DropDown.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      option: PropTypes.string.isRequired,
+      item: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };

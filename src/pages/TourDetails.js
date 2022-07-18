@@ -6,22 +6,25 @@ import Button from '../components/Button';
 import NavButton from '../components/NavButton';
 import Carousel from '../components/Carousel';
 import { setTourDetail, setTourLoading } from '../redux/reducers/tour';
+import getTourDetails from '../api/tourDetails';
 
 const TourDetails = () => {
   const tour = useSelector((state) => state.tour.tourDetail);
   const loading = useSelector((state) => state.tour.loading);
   const dispatch = useDispatch();
+
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://tourhunterapi.herokuapp.com/tours/${id}`)
-      .then((response) => response.json())
-      .then((result) => {
-        dispatch(setTourDetail(result));
-        dispatch(setTourLoading(false));
-      })
-      .catch((error) => console.log('error', error));
+    const fetchData = async () => {
+      const response = await getTourDetails(id);
+      dispatch(setTourDetail(response));
+      dispatch(setTourLoading(false));
+    };
+
+    fetchData();
   }, []);
+
   return (
     <section
       id="details"

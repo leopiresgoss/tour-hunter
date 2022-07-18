@@ -1,5 +1,5 @@
 const signOutUser = (user) => {
-  fetch('https://tourhunterapi.herokuapp.com/users/sign_out', {
+  fetch('http://127.0.0.1:3000/users/sign_out', {
     method: 'DELETE',
     headers: {
       accept: 'application/json',

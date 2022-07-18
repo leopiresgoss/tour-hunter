@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TourCard from '../components/TourCard';
+import getReservations from '../api/MyReservation';
 
 function MyReservations() {
+  const reservations = useSelector((state) => state.myReservations.reservations);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getReservations());
+  },
+  []);
+  console.log(reservations);
+
   return (
     <section className="mx-auto w-screen relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">
       <img

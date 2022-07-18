@@ -5,7 +5,7 @@ const SignInUser = async (formData) => {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
   const response = await fetch(
-    'https://tourhunterapi.herokuapp.com/users/sign_in',
+    'http://127.0.0.1:3000/users/sign_in',
     {
       method: 'POST',
       headers: myHeaders,

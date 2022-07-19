@@ -7,7 +7,6 @@ const Calendar = ({ handleDateChange }) => {
   const [startDate, setStartDate] = useState(null);
 
   const handleChange = (e) => {
-    console.log(e);
     setStartDate(e);
     handleDateChange(e);
   };

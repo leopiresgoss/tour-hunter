@@ -1,46 +1,92 @@
-# Getting Started with Create React App and Redux
+# TourHunter Front-End
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+> TourHunter is a project made by our 5-member group to give users options of tours around the world to reserve and the admins to add and delete said tours. General users can create an account to be able to reserve a tour and only admins will be able to create and delete tours. Feel free to fork this project and modify it for your own use!
 
-## Available Scripts
+## Deployment
+
+You can find the app live [here](https://tourhunterapp.herokuapp.com
+)
+
+## Back-end Repository
+
+You can find the back-end API [here](https://github.com/leopiresgoss/tour-hunter-api).
+
+## Built With
+
+- Languages: _**JavaScript, HTML & SCSS**_
+- Frameworks: _**React & Redux**_
+- Technologies used: _**Visual Studio Code**_
+
+## Getting Started
+
+### To launch the project locally:
+
+#### Step 1:
+
+- Clone this repo locally using either github desktop or using the clone link provided by the green button on the top right.
+
+- Alternatively, you can just download the complete zip file and extract the folder in your directory
+
+#### Step 2:
+
+- Download all dependencies to use the Project
+
+```bash
+> yarn install or npm install
+```
+
+#### Step 3:
 
 In the project directory, you can run:
 
-### `yarn start`
+##### `yarn start` or `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Authors
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Front-end Team
 
-### `yarn test`
+👤 **Mengstu Fentaw**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Github: [@mengiefen](https://github.com/mengiefen)
+- Twitter: [@MengistuFentaw](https://twitter.com/MengistuFentaw)
+- Linkedin: [@mengefen](https://www.linkedin.com/in/mengefen/)
 
-### `yarn build`
+👤 **Leonardo Pires Goss**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- GitHub: [@leopiresgoss](https://github.com/leopiresgoss)
+- Twitter: [@leonardopgoss](https://twitter.com/leonardopgoss)
+- Linkedin: [@leonardogoss](https://www.linkedin.com/in/leonardogoss/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+👤 **Thiago Allan Porro Ponce**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- GitHub: [@Thi-Ponce](https://github.com/Thi-Ponce)
+- Twitter: [@Thi_ponce](https://twitter.com/Thi_ponce)
+- LinkedIn: [@thiago-ponce](https://linkedin.com/in/thiago-ponce)
 
-### `yarn eject`
+### Back-end Team
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+👤 **Behnam Aghaali**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- GitHub: [@Behnam1369](https://github.com/Behnam1369)
+- LinkedIn: [@Behnam-Aghaali](https://www.linkedin.com/in/behnam-aghaali)
+- Twitter: [@Behnamagh1369](https://twitter.com/behnamagh1369)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🤝 Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Contributions, issues, and feature requests are welcome and highly encouraged!
+We feel that your input is what helps us grow so you're always Welcome :)
 
-## Learn More
+Feel free to check the [issues page](../../issues/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Show your support
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Thank you to all our peers who helped us out through this wonderful journey at Microverse. 🌥️
+- The creator of the design guidelines [Murat Korkmaz](https://www.behance.net/muratk) on Behance.
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.

@@ -71,6 +71,12 @@ In the project directory, you can run:
 - LinkedIn: [@Behnam-Aghaali](https://www.linkedin.com/in/behnam-aghaali)
 - Twitter: [@Behnamagh1369](https://twitter.com/behnamagh1369)
 
+👤 **Yersel Hurtado**
+
+- GitHub: [@yersel500](https://github.com/yersel500/)
+- LinkedIn: [Yersel Hurtado](https://www.linkedin.com/in/yersel-hurtado/)
+- Twitter: [@YerselHurtado](https://twitter.com/YerselHurtado)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome and highly encouraged!

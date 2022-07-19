@@ -15,6 +15,4 @@ describe('Testing Components', () => {
     ).toJSON();
     expect(signin).toMatchSnapshot();
   });
-
-
 });

@@ -12,13 +12,12 @@ const TourCard = (props) => {
   } = props;
   return (
     <div
-      className=" md:max-w-xs
-    rounded overflow-hidden shadow-lgr"
+      className="md:max-w-xs rounded overflow-hidden mx-2 shadow-lg shadow-gray-dark  "
     >
       <img
         src={tourImage}
         alt="Tour"
-        className="w-3/4 pb-5 mx-auto rounded-3xl"
+        className="w-100 pb-5 mx-auto rounded-3xl"
       />
       <h2 className="text-center pb-5 text-black font-l font-bold">
         {tourName}

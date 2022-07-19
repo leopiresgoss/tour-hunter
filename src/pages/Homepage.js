@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 import TourCard from '../components/TourCard';
 import FlashMessage from '../components/FlashMessage';
-import Message from '../components/Message';
 
 import {
   homepageTourAPI,
@@ -23,16 +22,9 @@ function Homepage() {
     dispatch(homepageTourAPI());
   }, []);
   return (
-    <section className="mx-auto w-screen">
-      <Message
-        message="Sample Message"
-        type="success"
-        color="black"
-        duration={10000}
-        title="Success"
-      />
+    <section className="mx-auto max-w-screen md:max-h-screen">
       <div className="mx-auto w-full flex flex-col p-10 mt-10 md:mt-0">
-        <h1 className="mx-auto font-bold text-2xl text-black md:mt-[100px]">
+        <h1 className="mx-auto font-bold text-2xl text-black md:mt-[20px]">
           Our Tours
         </h1>
         <p className="mx-auto text-gray-dark">Please select one of our tours</p>
@@ -47,6 +39,7 @@ function Homepage() {
             <BiLeftArrow />
           </button>
         </div>
+
         {tours.map((tour) => (
           <Link key={tour.id} to={`/tour/${tour.id}`}>
             <TourCard

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SideNav from './components/SideNav';
 import ReserveForm from './pages/ReserveForm';
@@ -14,9 +14,11 @@ import SignIn from './pages/SignIn';
 import { GET_USER_DATA, CHANGE_USER_STATUS } from './redux/reducers/token';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import Role from './constants/Role';
+import PATH_URL from './constants/urlPaths';
 
 function App() {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('user'));
@@ -27,9 +29,22 @@ function App() {
     }
   }, []);
 
+  const regex = /^(0|[1-9]\d*)$/;
+
+  const navColor = PATH_URL.filter((url) => {
+    if (pathname === url.path) {
+      return url;
+    } if (pathname.split('/')[2]?.match(regex)) {
+      return [{ color: 'text-green' }];
+    }
+    return null;
+  });
+
   return (
     <div className="App">
-      <TopNav btnColor="text-green" />
+
+      <TopNav btnColor={navColor[0].color} />
+
       <SideNav />
       <Routes>
         <Route path="/" element={<Homepage />} />

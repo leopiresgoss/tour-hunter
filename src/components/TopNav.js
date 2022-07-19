@@ -5,6 +5,7 @@ import { BiSearch } from 'react-icons/bi';
 import Button from './Button';
 
 const TopNav = ({ btnColor }) => {
+  // console.log(btnColor);
   const handleClick = () => {
     const nav = document.querySelector('.side-nav');
     nav.classList.add('translate-x-0');
@@ -29,7 +30,9 @@ const TopNav = ({ btnColor }) => {
     </div>
   );
 };
+
 TopNav.propTypes = {
   btnColor: PropTypes.string.isRequired,
 };
+
 export default TopNav;

@@ -7,7 +7,6 @@ import toursReducer from './reducers/tours';
 import hometourReducer from './reducers/homepageTours';
 import tourReducer from './reducers/tour';
 import myReservationReducer from './reducers/myReservation';
-import flashMessageReducer from './reducers/message';
 
 const store = configureStore({
   reducer: {
@@ -18,7 +17,7 @@ const store = configureStore({
     home: hometourReducer,
     tour: tourReducer,
     myReservations: myReservationReducer,
-    flashMessage: flashMessageReducer,
+
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

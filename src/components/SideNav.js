@@ -41,7 +41,7 @@ const SideNav = () => {
         <img
           src={LOGO}
           alt="logo"
-          className="transform scale-75 rotate-[-15deg]"
+          className="transform scale-75]"
         />
       </Link>
       <GrFormClose
@@ -49,22 +49,21 @@ const SideNav = () => {
         onClick={hideSideBar}
       />
       <nav>
-        <ul className="list-none flex flex-col gap-2 text-lg">
+        <div className="list-none flex flex-col gap-2 text-lg">
           {Links.map((link) => (
-            <li
+            <Link
               key={link.id}
-              className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
+              to={link.path}
+              className="uppercase font-bold tracking-wider hover:bg-green focus:bg-green
+              w-full px-2 py-3 transition duration-300 ease
+              hover:text-white focus:text-white rounded "
+              onClick={hideSideBar}
             >
-              <Link
-                to={link.path}
-                className="uppercase font-bold tracking-wider"
-                onClick={hideSideBar}
-              >
-                {link.src}
-              </Link>
-            </li>
+              {link.src}
+            </Link>
+
           ))}
-        </ul>
+        </div>
         {isSignedIn && (
         <button type="submit" className="btn-red" onClick={handleSignOut}>
           Sign Out

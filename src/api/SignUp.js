@@ -1,10 +1,9 @@
-import { updateSignedInStatus } from '../redux/reducers/users';
-import store from '../redux/store';
+import host from './host';
 
 const CreateUser = async (formData) => {
   const myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
-  await fetch('https://tourhunterapi.herokuapp.com/users', {
+  const response = await fetch(`${host}/users`, {
     method: 'POST',
     headers: myHeaders,
     body: JSON.stringify({ user: formData }),
@@ -12,13 +11,12 @@ const CreateUser = async (formData) => {
     .then((response) => response.text())
     .then((result) => {
       if (result === '{"message":"Signed up."}') {
-        store.dispatch(updateSignedInStatus('Waiting for confirmation'));
-        window.location.href = 'http://localhost:3001/tours';
-      } else {
-        console.log(result); //eslint-disable-line
+        return result;
       }
+      return null;
     })
     .catch((error) => console.log('error', error));  //eslint-disable-line
+  return response;
 };
 
 export default CreateUser;

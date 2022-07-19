@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { AiOutlineCheck } from 'react-icons/ai';
 import Button from '../components/Button';
 import CreateUser from '../api/SignUp';
 import LOGO from '../images/Tour-Hunter.png';
+import Message from '../components/Message';
+import { updateSignedInStatus } from '../redux/reducers/users';
 
 export default function SignUp() {
+  const signedIn = useSelector((state) => state.signedIn);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
     password: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    CreateUser(formData);
+    dispatch(updateSignedInStatus('Request sent'));
+    const submit = async () => {
+      const response = await CreateUser(formData);
+      if (response === '{"message":"Signed up."}') {
+        dispatch(updateSignedInStatus('Waiting for confirmation'));
+      } else {
+        dispatch(updateSignedInStatus('Failed'));
+      }
+    };
+
+    submit();
   };
 
   const handleChange = (e) => {
@@ -21,7 +37,31 @@ export default function SignUp() {
   };
 
   return (
+
     <div className="min-h-screen bg-orange bg-opacity-80 bg-no-repeat bg-cover flex flex-col justify-center items-center">
+      {
+        // eslint-disable-next-line no-nested-ternary
+        signedIn === 'Waiting for confirmation' ? (
+          <Message
+            className="bg-white"
+            message="Thanks for signing up! We'll send you an email to confirm your account.In case you don't see it in your inbox, please check your spam folder."
+            title="Success"
+            type="success"
+            color="black"
+            duration={20000}
+            icon={<AiOutlineCheck />}
+          />
+        ) : signedIn === 'Failed' ? (
+          <Message
+            className="bg-white"
+            message="Filed to sign up. Please try again later."
+            title="Failed"
+            type="alert"
+            color="Red"
+            duration={10000}
+          />
+        ) : ''
+      }
       <div
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
         style={{ backgroundImage: 'url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)' }}
@@ -59,7 +99,7 @@ export default function SignUp() {
             onChange={handleChange}
           />
           <Button
-            btnName="Sign Up"
+            btnName={signedIn === 'Request sent' ? 'Signing up ... ' : 'Sign up'}
             btnType="submit"
             bgColor="bg-green text-white mt-4"
           />
@@ -70,7 +110,7 @@ export default function SignUp() {
             to="/users/sign_in"
             className="text-center font-bold hover:text-green"
           >
-            Sign In
+            Sign in
           </Link>
         </p>
       </div>

@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { CgSpinner as CircleSpinner } from 'react-icons/cg';
 import Button from '../components/Button';
 import makeReservation from '../api/ReserveTour';
 import DropDown from '../components/DropDown';
 import Message from '../components/Message';
+import { changeStatus } from '../redux/reducers/reservation';
 
 const ReserveForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { tourDetail } = useSelector((state) => state.tour);
-  const success = useSelector((state) => state.reservation.package.status);
+  const { status, message } = useSelector((state) => state.reservation);
+
   const [showMessage, setShowMessage] = useState({
     type: null,
     message: null,
@@ -48,24 +51,32 @@ const ReserveForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(makeReservation(tourPackage));
-
-    if (success === 'Success') {
-      setShowMessage({
-        type: 'success',
-        message: 'Your reservation has been made successfully!',
-        title: 'Success',
-      });
-      setTimeout(() => {
-        navigate(-1);
-      }, 1000);
-    } else {
-      setShowMessage({
-        type: 'alert',
-        message: 'Your reservation has failed!',
-        title: 'Failed',
-      });
-    }
   };
+
+  useEffect(() => {
+    const displayMessage = () => {
+      if (status === 'Success' && message === 'Booked successfully.') {
+        setTimeout(() => {
+          navigate(-1);
+        }, 1000);
+
+        dispatch(changeStatus({ message: null, status: null }));
+      } else if (status === 'Loading') {
+        setShowMessage({
+          type: null,
+          message: null,
+          title: null,
+        });
+      } else {
+        setShowMessage({
+          type: 'alert',
+          message: 'Your reservation has failed!',
+          title: 'Failed',
+        });
+      }
+    };
+    displayMessage();
+  }, [status]);
 
   const packageOptions = [
     { id: 1, item: 'Standard' },
@@ -76,10 +87,9 @@ const ReserveForm = () => {
   return (
     <div className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">
 
-      {showMessage.message && (
+      {(status === 'Success' || message === 'Failure') && (
       <Message
         message={showMessage.message}
-        position="absolute top-16 right-10 md:top-16 :right-10"
         type={showMessage.type}
         color="white"
         duration={5000}
@@ -100,7 +110,6 @@ const ReserveForm = () => {
           {
             `Book ${tourDetail.name}`
           }
-
         </h2>
 
         <hr className="border-gray w-1/2 mx-auto mb-3" />
@@ -115,12 +124,32 @@ const ReserveForm = () => {
           onSubmit={handleSubmit}
         >
           <div className="flex gap-2">
-            <DropDown dropDownId="package" options={packageOptions} handleChange={handleChange} dropDownName="Select Package" />
-            <DropDown dropDownId="tour-date" options={tourDates} handleChange={handleChange} dropDownName="Select Date" />
+            <DropDown
+              dropDownId="package"
+              options={packageOptions}
+              handleChange={handleChange}
+              dropDownName="Select Package"
+            />
+            <DropDown
+              dropDownId="tour-date"
+              options={tourDates}
+              handleChange={handleChange}
+              dropDownName="Select Date"
+            />
           </div>
           <Button
             btnType="submit"
-            btnName="Reserve Now"
+            btnName={(
+              <div className="flex justify-center gap-2">
+                {status === 'Loading'
+                  ? (
+                    <>
+                      <CircleSpinner className="my-auto w-5 h-5 animate-spin" />
+                      Reserving ...
+                    </>
+                  ) : 'Reserve Tour'}
+              </div>
+            )}
             bgColor="bg-gray text-green w-2/3 mt-4 mx-auto"
           />
 

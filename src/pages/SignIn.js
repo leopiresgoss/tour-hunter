@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Button from '../components/Button';
 import SignInUser from '../api/SignIn';
 import LOGO from '../images/Tour-Hunter.png';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const { isSignedIn, userData } = useSelector((state) => state.token);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +18,8 @@ export default function SignIn() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  if (isSignedIn && userData.role) { navigate('/tours'); }
 
   return (
     <div className="min-h-screen bg-orange bg-opacity-80 bg-no-repeat bg-cover flex flex-col justify-center items-center">

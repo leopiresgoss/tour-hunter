@@ -19,6 +19,7 @@
     border border-r-gray p-4 fixed left-0 top-0 z-[1000]  translate-x-[-100%]
     transform duration-500 delay-300 ease-in-out shadow-xl;
   }
+  
   .side-nav-social {
     @apply text-3xl  hover:border-2 hover:border-green rounded-full p-1;
   }
@@ -27,7 +28,7 @@
     @apply py-3 px-5 rounded-full font-semibold bg-transparent text-black border-green border;
   }
 
-  .btn-green {
+  .btn-red {
     @apply text-white mt-5 bg-red py-1 px-5 rounded font-semibold my-auto text-center;
   }
 

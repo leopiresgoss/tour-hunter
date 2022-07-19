@@ -12,6 +12,8 @@ import DeleteTour from './pages/DeleteTour';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import { GET_USER_DATA, CHANGE_USER_STATUS } from './redux/reducers/token';
+import ProtectedRoutes from './components/ProtectedRoutes';
+import Role from './constants/Role';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,17 +31,44 @@ function App() {
     <div className="App">
       <TopNav btnColor="text-green" />
       <SideNav />
-
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/tours" element={<Homepage />} />
         <Route path="/users/sign_in" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/reservations" element={<MyReservations />} />
         <Route path="/tour/:id" element={<TourDetails />} />
-        <Route path="/reservation/new" element={<ReserveForm />} />
-        <Route path="/tour/new" element={<AdminAddTour />} />
-        <Route path="/tours/delete" element={<DeleteTour />} />
+
+        <Route
+          path="/reservations"
+          element={
+            <ProtectedRoutes roles={[Role.USER, Role.ADMIN]}><MyReservations /></ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/reservation/new"
+          element={(
+            <ProtectedRoutes roles={[Role.USER, Role.ADMIN]}>
+              <ReserveForm />
+            </ProtectedRoutes>
+          )}
+        />
+        <Route
+          path="/tour/new"
+          element={(
+            <ProtectedRoutes roles={[Role.ADMIN]}>
+              <AdminAddTour />
+            </ProtectedRoutes>
+          )}
+        />
+        <Route
+          path="/tours/delete"
+          element={(
+            <ProtectedRoutes roles={[Role.ADMIN]}>
+              <DeleteTour />
+            </ProtectedRoutes>
+           )}
+        />
       </Routes>
     </div>
   );

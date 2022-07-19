@@ -15,7 +15,7 @@ const CreateUser = async (formData) => {
       }
       return null;
     })
-    .catch((error) => console.log('error', error));  //eslint-disable-line
+    .catch((error) => error); //eslint-disable-line
   return response;
 };
 

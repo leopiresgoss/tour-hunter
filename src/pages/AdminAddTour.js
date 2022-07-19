@@ -34,7 +34,6 @@ const AdminAddTour = () => {
   };
 
   const [calendarCount, setcalendarCount] = useState([1]);
-  console.log(setcalendarCount);
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">

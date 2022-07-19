@@ -1,11 +1,12 @@
 import host from './host';
 
 const confirmAccountAPI = async (token) => {
-  console.log(host);
-  const result = await fetch(`${host}/users/confirmation?confirmation_token=${token}`)
+  const result = await fetch(
+    `${host}/users/confirmation?confirmation_token=${token}`,
+  )
     .then((response) => response.json())
     .then((result) => result)
-    .catch((error) => console.log('error', error));
+    .catch((error) => error);
   return result;
 };
 

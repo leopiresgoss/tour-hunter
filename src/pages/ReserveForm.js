@@ -91,7 +91,7 @@ const ReserveForm = () => {
       <Message
         message={showMessage.message}
         type={showMessage.type}
-        color="white"
+        color="black"
         duration={5000}
         title={showMessage.title || 'Information'}
       />

@@ -1,17 +1,41 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlineCheck } from 'react-icons/ai';
 import Button from '../components/Button';
 import SignInUser from '../api/SignIn';
 import LOGO from '../images/Tour-Hunter.png';
+import confirmAccountAPI from '../api/confirmAccount';
+import { updateSignedInStatus } from '../redux/reducers/users';
+import Message from '../components/Message';
 
 export default function SignIn() {
+  const signedIn = useSelector((state) => state.signedIn);
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { isSignedIn, userData } = useSelector((state) => state.token);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const confirmToken = searchParams.get('confirm_token');
+
+  useEffect(() => {
+    if (confirmToken) {
+      const fetchData = async () => {
+        const response = await confirmAccountAPI(confirmToken);
+        if (response.id) {
+          dispatch(updateSignedInStatus('Confirmed'));
+        } else {
+          dispatch(updateSignedInStatus('Confirm failed'));
+        }
+      };
+
+      fetchData();
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateSignedInStatus('Request sent'));
     SignInUser(formData);
   };
 
@@ -23,6 +47,31 @@ export default function SignIn() {
 
   return (
     <div className="min-h-screen bg-orange bg-opacity-80 bg-no-repeat bg-cover flex flex-col justify-center items-center">
+      {
+        // eslint-disable-next-line no-nested-ternary
+        signedIn === 'Confirmed'
+          ? (
+            <Message
+              message="Your account has been confirmed. Please sign in to continue."
+              title="Success"
+              type="success"
+              color="black"
+              duration={10000}
+              bgColor="white"
+              icon={<AiOutlineCheck />}
+            />
+          ) : signedIn === 'Confirm failed'
+            ? (
+              <Message
+                message="Your account has not been confirmed. Please try again later."
+                title="Failed"
+                type="alert"
+                color="Red"
+                duration={10000}
+                bgColor="white"
+              />
+            ) : ''
+      }
       <div
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
         style={{ backgroundImage: 'url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)' }}
@@ -52,7 +101,7 @@ export default function SignIn() {
             onChange={handleChange}
           />
           <Button
-            btnName="Sign In"
+            btnName={signedIn === 'Request sent' ? 'Signing in' : 'Sign In'}
             btnType="submit"
             bgColor="bg-green text-white mt-4"
           />

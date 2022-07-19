@@ -85,7 +85,7 @@
 
 /* Flash Messages */
 .flash-message {
-  @apply  flex flex-col rounded min-w-[80%] md:max-w-[35%] border z-[100] border-gray shadow-xl;
+  @apply  flex flex-col rounded min-w-[80%] md:max-w-[35%] border z-[100] border-gray shadow-xl bg-white;
 }
 
 

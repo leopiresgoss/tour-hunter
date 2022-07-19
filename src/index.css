@@ -87,7 +87,8 @@
     mt-1   
     m-0
     bg-clip-padding
-    border-none;
+    border-none
+    w-full;
   }
 
   .dropdown-list-item {

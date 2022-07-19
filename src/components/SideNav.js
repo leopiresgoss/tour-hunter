@@ -41,7 +41,7 @@ const SideNav = () => {
         <img
           src={LOGO}
           alt="logo"
-          className="transform scale-75 rotate-[-15deg]"
+          className="transform scale-75]"
         />
       </Link>
       <GrFormClose

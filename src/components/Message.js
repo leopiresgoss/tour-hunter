@@ -6,8 +6,8 @@ import '../flash.css';
 
 const Message = (props) => {
   const {
-    duration, icon, message, title, type,
-    color, position,
+    duration, icon, message,
+    title, type, color, position,
   } = props;
 
   const [showMessage, setShowMessage] = useState(true);
@@ -52,7 +52,7 @@ const Message = (props) => {
 };
 
 Message.defaultProps = {
-  position: 'absolute top-16 left-[100px] md:top-16 :right-10',
+  position: 'absolute top-16 left-1/2 transform -translate-x-1/2',
   duration: 5000,
   icon: <TiInfo />,
   title: 'Information',

@@ -6,25 +6,23 @@ import LOGO from '../images/Tour-Hunter.png';
 import SocialIcons from './SocialIcons';
 import signOutUser from '../api/SignOut';
 import { signOut } from '../redux/reducers/token';
+import { AdminLinks, UserLinks, GuestLinks } from '../constants/Links';
+import Role from '../constants/Role';
 
 const SideNav = () => {
   const dispatch = useDispatch();
-  const signedIn = useSelector((state) => state.signedIn);
+  const { isSignedIn, userData } = useSelector((state) => state.token);
+
   const user = useSelector((state) => state.token).userData || JSON.parse(localStorage.getItem('user'));
 
-  const Links = [
-    { id: 'Home', src: 'Home', path: '/tours' },
-    { id: 'Reservation', src: 'My Reservations', path: '/reservations' },
-    { id: 'new-tour', src: 'New Tour', path: '/tour/new' },
-    { id: 'delete', src: 'Delete Tour', path: '/tours/delete' },
-    {
-      id: 'signout',
-      src: signedIn === 'Not signed in' ? 'Sign up' : 'Sign in',
-      path: signedIn === 'Not signed in' ? '/signup' : '/',
-    },
-    { id: 'signin', src: 'Sign In', path: '/users/sign_in' },
-  ];
-
+  let Links;
+  if (isSignedIn && userData.role === Role.ADMIN) {
+    Links = AdminLinks;
+  } else if (isSignedIn && userData.role === Role.USER) {
+    Links = UserLinks;
+  } else {
+    Links = GuestLinks;
+  }
   const hideSideBar = () => {
     const nav = document.querySelector('.side-nav');
     nav.classList.remove('translate-x-0');
@@ -59,7 +57,7 @@ const SideNav = () => {
             >
               <Link
                 to={link.path}
-                className="uppercase font-bold tracking-wider  "
+                className="uppercase font-bold tracking-wider"
                 onClick={hideSideBar}
               >
                 {link.src}
@@ -67,9 +65,12 @@ const SideNav = () => {
             </li>
           ))}
         </ul>
-        <button type="submit" className="btn-green" onClick={handleSignOut}>
-          SignOut
+        {isSignedIn && (
+        <button type="submit" className="btn-red" onClick={handleSignOut}>
+          Sign Out
         </button>
+        )}
+
       </nav>
       <SocialIcons />
     </div>

@@ -5,12 +5,12 @@ import makeReservation from '../../api/ReserveTour';
 export const reservationSlice = createSlice({
   name: 'reservation',
   initialState: {
-    package: {},
+    message: null,
     status: null,
   },
   reducers: {
-    setPackage: (state, action) => {
-      state.package = action.payload;
+    changeStatus: (state, action) => {
+      state.status = action.payload;
     },
   },
   extraReducers: {
@@ -18,7 +18,7 @@ export const reservationSlice = createSlice({
       state.status = 'Loading';
     },
     [makeReservation.fulfilled]: (state, action) => {
-      state.package = action.payload;
+      state.message = action.payload;
       state.status = 'Success';
     },
     [makeReservation.rejected]: (state) => {
@@ -27,5 +27,5 @@ export const reservationSlice = createSlice({
   },
 });
 
-export const { setPackage } = reservationSlice.actions;
+export const { changeStatus } = reservationSlice.actions;
 export default reservationSlice.reducer;

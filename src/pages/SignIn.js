@@ -43,38 +43,43 @@ export default function SignIn() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  if (isSignedIn && userData.role) { navigate('/tours'); }
+  if (isSignedIn && userData.role) {
+    navigate('/tours');
+  }
 
   return (
-    <div className="min-h-screen bg-orange bg-opacity-80 bg-no-repeat bg-cover flex flex-col justify-center items-center">
+    <div className="min-h-screen bg-green bg-opacity-80 bg-no-repeat bg-cover flex flex-col justify-center items-center">
       {
         // eslint-disable-next-line no-nested-ternary
-        signedIn === 'Confirmed'
-          ? (
-            <Message
-              message="Your account has been confirmed. Please sign in to continue."
-              title="Success"
-              type="success"
-              color="black"
-              duration={10000}
-              bgColor="white"
-              icon={<AiOutlineCheck />}
-            />
-          ) : signedIn === 'Confirm failed'
-            ? (
-              <Message
-                message="Your account has not been confirmed. Please try again later."
-                title="Failed"
-                type="alert"
-                color="Red"
-                duration={10000}
-                bgColor="white"
-              />
-            ) : ''
+        signedIn === 'Confirmed' ? (
+          <Message
+            message="Your account has been confirmed. Please sign in to continue."
+            title="Success"
+            type="success"
+            color="black"
+            duration={10000}
+            bgColor="white"
+            icon={<AiOutlineCheck />}
+          />
+        ) : signedIn === 'Confirm failed' ? (
+          <Message
+            message="Your account has not been confirmed. Please try again later."
+            title="Failed"
+            type="alert"
+            color="Red"
+            duration={10000}
+            bgColor="white"
+          />
+        ) : (
+          ''
+        )
       }
       <div
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
-        style={{ backgroundImage: 'url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)' }}
+        style={{
+          backgroundImage:
+            'url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)',
+        }}
       />
       <img
         src={LOGO}
@@ -82,7 +87,10 @@ export default function SignIn() {
         className="transform scale-75 mt-4 md:mt-0 mb-8"
       />
       <div className="md:w-full max-w-sm">
-        <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-md px-8 pt-6 pb-8 mb-4 flex flex-col gap-2">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-lg rounded-md px-8 pt-6 pb-8 mb-4 flex flex-col gap-2"
+        >
           <h1 className="mb-4 text-2xl font-semibold text-center">Sign In</h1>
           <input
             className="form-input"

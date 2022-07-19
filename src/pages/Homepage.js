@@ -41,7 +41,7 @@ function Homepage() {
         </div>
 
         {tours.map((tour) => (
-          <Link key={tour.id} to={`/tour/${tour.id}`}>
+          <Link key={tour.id} to={`/tour/${tour.id}`} className="md:h-[500px]">
             <TourCard
               tourName={tour.name}
               tourLocale={tour.location}

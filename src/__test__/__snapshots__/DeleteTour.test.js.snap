@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Admin Delete Tour should render the page 1`] = `
+<div
+  className="container relative mx-auto p-3 w-screen"
+>
+  <h1
+    className="text-center pt-12 text-2xl font-bold"
+  >
+    Delete a Tour
+  </h1>
+</div>
+`;

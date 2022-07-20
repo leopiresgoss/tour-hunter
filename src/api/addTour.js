@@ -23,10 +23,10 @@ const addTourAPI = async (token, formData) => {
     redirect: 'follow',
   };
 
-  fetch('https://tourhunterapi.herokuapp.com/tours', requestOptions)
-    .then((response) => response.text())
-    .then((result) => result)
-    .catch((error) => error);
+  return fetch(
+    'https://tourhunterapi.herokuapp.com/tours',
+    requestOptions,
+  ).then((response) => response.text());
 };
 
 export default addTourAPI;

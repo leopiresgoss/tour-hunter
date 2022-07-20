@@ -22,8 +22,14 @@ export const deleteTour = createAsyncThunk(
 
 export const addTour = createAsyncThunk(
   'tours/addTour',
-  async ({ token, formData }) => {
-    await addTourAPI(token, formData);
+  async ({ token, formData }, { rejectWithValue }) => {
+    const res = await addTourAPI(token, formData);
+
+    if (res.includes('Tour was created succesfully')) {
+      return res;
+    }
+
+    return rejectWithValue('Tour not created');
   },
 );
 
@@ -73,7 +79,7 @@ export const tours = createSlice({
       state.status = 'Added';
     },
     [addTour.rejected]: (state) => {
-      state.status = 'Failed';
+      state.status = 'Tour not created';
     },
   },
 });

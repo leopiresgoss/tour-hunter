@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Calendar from '../components/Calendar';
 import Button from '../components/Button';
+import Message from '../components/Message';
 import { addTour, setState } from '../redux/reducers/tours';
 
 const AdminAddTour = () => {
@@ -22,7 +23,9 @@ const AdminAddTour = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTour({ token, formData }));
+    if (formData.date.length > 0) {
+      dispatch(addTour({ token, formData }));
+    }
   };
 
   const handleChange = (e) => {
@@ -48,6 +51,9 @@ const AdminAddTour = () => {
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">
+      {status === 'Tour not created' && (
+        <Message message="Tour not created" type="alert" color="red" />
+      )}
       <div
         className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
         style={{

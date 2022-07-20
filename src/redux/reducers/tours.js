@@ -35,7 +35,11 @@ export const tours = createSlice({
     package: [],
     status: null,
   },
-  reducers: {},
+  reducers: {
+    setState: (state, action) => {
+      state.status = action.payload;
+    },
+  },
   extraReducers: {
     [fetchTours.pending]: (state) => {
       state.status = 'Loading';
@@ -74,4 +78,5 @@ export const tours = createSlice({
   },
 });
 
+export const { setState } = tours.actions;
 export default tours.reducer;

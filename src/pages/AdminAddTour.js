@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Calendar from '../components/Calendar';
 import Button from '../components/Button';
-import { addTour } from '../redux/reducers/tours';
+import { addTour, setState } from '../redux/reducers/tours';
 
 const AdminAddTour = () => {
   const token = useSelector((state) => state.token.userData.token);
@@ -15,6 +16,9 @@ const AdminAddTour = () => {
     images: [],
     date: [],
   });
+
+  const status = useSelector((state) => state.tours.status);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +38,13 @@ const AdminAddTour = () => {
   };
 
   const [calendarCount, setcalendarCount] = useState([1]);
+
+  useEffect(() => {
+    if (status === 'Added') {
+      dispatch(setState(''));
+      navigate('../');
+    }
+  }, [status]);
 
   return (
     <div className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80">
@@ -60,6 +71,7 @@ const AdminAddTour = () => {
               name="name"
               placeholder="Tour Name"
               className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+              required
             />
             <input
               onChange={handleChange}
@@ -67,6 +79,7 @@ const AdminAddTour = () => {
               name="location"
               placeholder="Location"
               className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+              required
             />
             <input
               onChange={handleChange}
@@ -74,6 +87,9 @@ const AdminAddTour = () => {
               name="price"
               placeholder="Price"
               className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+              step={0.01}
+              min={0.01}
+              required
             />
             <textarea
               onChange={handleChange}
@@ -81,6 +97,7 @@ const AdminAddTour = () => {
               placeholder="Description"
               rows="4"
               className="py-2 px-5 rounded-xl font-semibold bg-transparent text-white border-white border placeholder:text-white"
+              required
             />
             <input
               onInput={fileSelectedHandler}
@@ -88,6 +105,7 @@ const AdminAddTour = () => {
               type="file"
               multiple="multiple"
               accept="image/*"
+              required
             />
             <div className="flex flex-col gap-1">
               {calendarCount.map((counter) => (

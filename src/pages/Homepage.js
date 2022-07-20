@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
@@ -10,20 +10,24 @@ import {
   updateRightTours,
   updateLeftTours,
 } from '../redux/reducers/homepageTours';
+import Spinner from '../components/Spinner';
 
 function Homepage() {
   const signedIn = useSelector((state) => state.signedIn);
   const status = useSelector((state) => state.home.status);
+  const tours = useSelector((state) => state.home.tours);
+  const startPoint = useSelector((state) => state.home.startPoint);
   const dispatch = useDispatch();
-  // eslint-disable-next-line max-len
-  const tours = useSelector((state) => state.home.tours.filter(
-    (t) => t.visible === true || window.screen.width < 500,
-  ));
 
-  const [startPostition, setStartPosition] = useState(0);
+  const visibleTours = tours.filter(
+    (t) => t.visible === true || window.screen.width < 500,
+  );
+
+  // const [startPostition, setStartPosition] = useState(0);
   useEffect(() => {
     dispatch(homepageTourAPI());
   }, []);
+
   return (
     <section className="mx-auto max-w-screen md:max-h-screen">
       <div className="mx-auto w-full flex flex-col p-10 mt-10 md:mt-0">
@@ -32,17 +36,17 @@ function Homepage() {
         </h1>
         <p className="mx-auto text-gray-dark">Please select one of our tours</p>
       </div>
-      <div className="w-full flex flex-col gap-24 md:flex-row  md:justify-center md:items-center md:min-h-[80vh] md:gap-0">
+      <div className="mx-auto w-full flex flex-col gap-24 md:flex-row  md:justify-center md:items-center md:min-h-[70vh] md:gap-0" style={{ maxWidth: '1028px' }}>
         <div className="hidden md:block">
           <button
             onClick={() => {
-              if (startPostition > 0) {
+              if (startPoint > 0) {
                 dispatch(updateLeftTours());
-                setStartPosition(startPostition - 1);
+                // setStartPosition(startPoint - 1);
               }
             }}
             type="button"
-            className={`${status === 'Loading' || startPostition === 0 ? 'bg-gray' : 'bg-green'} text-white max-w-[100px] py-3 pl-8 pr-3 rounded-br-full rounded-tr-full font-semibold`}
+            className={`${status === 'Loading' || startPoint === 0 ? 'bg-gray' : 'bg-green'} text-white max-w-[100px] py-3 pl-8 pr-3 rounded-br-full rounded-tr-full font-semibold`}
           >
             <BiLeftArrow />
           </button>
@@ -52,25 +56,13 @@ function Homepage() {
           status === 'Loading'
             ? (
               <>
-                <TourCard
-                  tourName="loading ..."
-                  tourLocale="loading ..."
-                  tourImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Blank_file.xcf/640px-Blank_file.xcf.png"
-                />
-                <TourCard
-                  tourName="loading ..."
-                  tourLocale="loading ..."
-                  tourImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Blank_file.xcf/640px-Blank_file.xcf.png"
-                />
-                <TourCard
-                  tourName="loading ..."
-                  tourLocale="loading ..."
-                  tourImage="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Blank_file.xcf/640px-Blank_file.xcf.png"
-                />
+                <div className="md:h-[100px] flex-1 flex justify-center">
+                  <Spinner />
+                </div>
               </>
             )
-            : tours.map((tour) => (
-              <Link key={tour.id} to={`/tour/${tour.id}`} className="md:h-[500px]">
+            : visibleTours.map((tour) => (
+              <Link key={tour.id} to={`/tour/${tour.id}`} className="md:h-[420px] flex-1">
                 <TourCard
                   tourName={tour.name}
                   tourLocale={tour.location}
@@ -83,13 +75,13 @@ function Homepage() {
         <div className="hidden md:block">
           <button
             onClick={() => {
-              if (startPostition < tours.length) {
+              if (startPoint < tours.length - 3) {
                 dispatch(updateRightTours());
-                setStartPosition(startPostition + 1);
+                // setStartPosition(startPostition + 1);
               }
             }}
             type="button"
-            className={`${status === 'Loading' || startPostition === tours.length ? 'bg-gray' : 'bg-green'} text-white max-w-[100px] py-3 pl-3 pr-8 rounded-bl-full rounded-tl-full  font-semibold mx-5`}
+            className={`${status === 'Loading' || startPoint === tours.length - 3 ? 'bg-gray' : 'bg-green'} text-white max-w-[100px] py-3 pl-3 pr-8 rounded-bl-full rounded-tl-full  font-semibold`}
           >
             <BiRightArrow />
           </button>

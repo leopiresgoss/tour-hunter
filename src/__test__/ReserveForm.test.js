@@ -13,16 +13,19 @@ const packageOptions = [
 ];
 
 it('Reserve Form renders correctly', () => {
-  const tree = TestRenderer
-    .create(
-      <Provider store={store}>
-        <Router>
-          <ReserveForm />
-          <DropDown options={packageOptions} dropDownId="package" />
-        </Router>
-      </Provider>,
-    )
-    .toJSON();
+  const tree = TestRenderer.create(
+    <Provider store={store}>
+      <Router>
+        <ReserveForm />
+        <DropDown
+          options={packageOptions}
+          dropDownId="package"
+          dropDownName="Select package"
+          handleChange={() => {}}
+        />
+      </Router>
+    </Provider>,
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

@@ -170,6 +170,7 @@ Array [
         onClick={[Function]}
         type="button"
       >
+        Select package
         <svg
           aria-hidden="true"
           className="w-2 ml-2"

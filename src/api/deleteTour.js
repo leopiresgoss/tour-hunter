@@ -15,7 +15,7 @@ const deleteTourAPI = async (token, id) => {
   )
     .then((response) => response.text())
     .then((result) => result)
-    .catch((error) => console.log(error));
+    .catch((error) => error);
 };
 
 export default deleteTourAPI;

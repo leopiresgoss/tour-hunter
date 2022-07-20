@@ -1,22 +1,4 @@
 const addTourAPI = async (token, formData) => {
-  // const myHeaders = new Headers();
-  // myHeaders.append('Authorization', token);
-  // myHeaders.append('Content-Type', 'application/json');
-
-  // const requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   redirect: 'follow',
-  // };
-
-  // return fetch(
-  //   `https://tourhunterapi.herokuapp.com/tours`,
-  //   requestOptions,
-  // )
-  //   .then((response) => response.text())
-  //   .then((result) => result)
-  //   .catch((error) => console.log(error));
-
   const myHeaders = new Headers();
   myHeaders.append('Authorization', token);
 
@@ -29,8 +11,6 @@ const addTourAPI = async (token, formData) => {
   formData.images.forEach((el, i) => {
     formdata.append('images[]', formData.images[i], el);
   });
-
-  // formdata.append('tour_dates_attributes[0][date]', formData.date);
 
   formData.date.forEach((el, i) => {
     formdata.append(`tour_dates_attributes[${i}][date]`, el);
@@ -46,7 +26,7 @@ const addTourAPI = async (token, formData) => {
   fetch('https://tourhunterapi.herokuapp.com/tours', requestOptions)
     .then((response) => response.text())
     .then((result) => result)
-    .catch((error) => console.log('error', error));
+    .catch((error) => error);
 };
 
 export default addTourAPI;

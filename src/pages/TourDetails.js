@@ -20,7 +20,7 @@ const TourDetails = () => {
         dispatch(setTourDetail(result));
         dispatch(setTourLoading(false));
       })
-      .catch((error) => console.log('error', error));
+      .catch((error) => error);
   }, []);
   return (
     <section

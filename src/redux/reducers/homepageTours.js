@@ -1,22 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-/* eslint no-param-reassign: "error" */
-
 export const homepageTourAPI = createAsyncThunk('hometour/tours', async () => {
   const response = await fetch('https://tourhunterapi.herokuapp.com/tours');
   const data = await response.json();
-  return data.map((tour, index) => {
-    if (index < 3) {
-      return {
-        ...tour,
-        visible: true,
-      };
-    }
-    return {
-      ...tour,
-      visible: false,
-    };
-  });
+  return data;
 });
 
 const homeTour = {
@@ -29,36 +16,45 @@ export const hometourSlice = createSlice({
   name: 'hometour',
   initialState: homeTour,
   reducers: {
-    updateRightTours: (state) => {
-      // remove visible tours
-      if (state.tours.length > state.startPoint + 3) {
-        state.tours[state.startPoint].visible = false;
-        state.startPoint += 1;
-        // put visible in the next 3 tours
-        state.tours[state.startPoint].visible = true;
-        state.tours[state.startPoint + 1].visible = true;
-        state.tours[state.startPoint + 2].visible = true;
-      }
-    },
-    updateLeftTours: (state) => {
-      // remove visible tours
-      if (state.startPoint > 0) {
-        state.tours[state.startPoint + 2].visible = false;
-        state.startPoint -= 1;
-        // put visible in the next 3 tours
-        state.tours[state.startPoint].visible = true;
-        state.tours[state.startPoint + 1].visible = true;
-        state.tours[state.startPoint + 2].visible = true;
-      }
-    },
+    updateRightTours: (state) => ({
+      ...state,
+      startPoint: state.startPoint + 1,
+      tours: state.tours.map((el, i) => {
+        if (i >= state.startPoint + 1 && i <= state.startPoint + 3) {
+          return {
+            ...el,
+            visible: true,
+          };
+        }
+        return {
+          ...el,
+          visible: false,
+        };
+      }),
+    }),
+    updateLeftTours: (state) => ({
+      ...state,
+      startPoint: state.startPoint - 1,
+      tours: state.tours.map((el, i) => {
+        if (i >= state.startPoint - 1 && i <= state.startPoint + 1) {
+          return {
+            ...el,
+            visible: true,
+          };
+        }
+        return {
+          ...el,
+          visible: false,
+        };
+      }),
+    }),
   },
   extraReducers: {
-    [homepageTourAPI.pending]: (state) => {
-      state.status = 'Loading';
-    },
-    [homepageTourAPI.fulfilled]: (state, action) => {
-      state.tours = action.payload.map((tour, index) => {
-        if (index < 3) {
+    [homepageTourAPI.pending]: (state) => ({ ...state, status: 'Loading' }),
+    [homepageTourAPI.fulfilled]: (state, action) => ({
+      ...state,
+      tours: action.payload.map((tour, i) => {
+        if (i >= state.startPoint && i <= state.startPoint + 2) {
           return {
             ...tour,
             visible: true,
@@ -68,12 +64,10 @@ export const hometourSlice = createSlice({
           ...tour,
           visible: false,
         };
-      });
-      state.status = 'Success';
-    },
-    [homepageTourAPI.rejected]: (state) => {
-      state.status = 'Failed';
-    },
+      }),
+      status: 'Success',
+    }),
+    [homepageTourAPI.rejected]: (state) => ({ ...state, status: 'Failed' }),
   },
 });
 

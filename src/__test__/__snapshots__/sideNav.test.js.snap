@@ -12,7 +12,7 @@ exports[`Testing Components Render Header 1`] = `
   >
     <img
       alt="logo"
-      className="transform scale-75 rotate-[-15deg]"
+      className="transform scale-75]"
       src="Tour-Hunter.png"
     />
   </a>
@@ -40,43 +40,31 @@ exports[`Testing Components Render Header 1`] = `
     />
   </svg>
   <nav>
-    <ul
+    <div
       className="list-none flex flex-col gap-2 text-lg"
     >
-      <li
-        className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
+      <a
+        className="uppercase font-bold tracking-wider hover:bg-green focus:bg-green w-full px-2 py-3 transition duration-300 ease hover:text-white focus:text-white rounded "
+        href="/tours"
+        onClick={[Function]}
       >
-        <a
-          className="uppercase font-bold tracking-wider"
-          href="/tours"
-          onClick={[Function]}
-        >
-          Home
-        </a>
-      </li>
-      <li
-        className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
+        Home
+      </a>
+      <a
+        className="uppercase font-bold tracking-wider hover:bg-green focus:bg-green w-full px-2 py-3 transition duration-300 ease hover:text-white focus:text-white rounded "
+        href="/signup"
+        onClick={[Function]}
       >
-        <a
-          className="uppercase font-bold tracking-wider"
-          href="/signup"
-          onClick={[Function]}
-        >
-          Sign up
-        </a>
-      </li>
-      <li
-        className="w-full hover:bg-green px-2 py-3 transition duration-300 ease hover:text-white "
+        Sign up
+      </a>
+      <a
+        className="uppercase font-bold tracking-wider hover:bg-green focus:bg-green w-full px-2 py-3 transition duration-300 ease hover:text-white focus:text-white rounded "
+        href="/users/sign_in"
+        onClick={[Function]}
       >
-        <a
-          className="uppercase font-bold tracking-wider"
-          href="/users/sign_in"
-          onClick={[Function]}
-        >
-          Sign In
-        </a>
-      </li>
-    </ul>
+        Sign In
+      </a>
+    </div>
   </nav>
   <div
     className="flex flex-col align-middle gap-2 w-full"

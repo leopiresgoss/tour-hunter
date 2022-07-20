@@ -25,16 +25,16 @@ const TourDetails = () => {
   return (
     <section
       id="details"
-      className="flex flex-col min-h-screen max-w-screen relative p-3 mt-12"
+      className="flex flex-col min-h-[90vh] max-w-screen relative p-3 mt-12"
     >
       {!loading ? (
-        <div className="flex flex-col mb-4 md:flex-row md:items-center md:justify-between">
-          <div className="md:w-3/5 md:mx-auto">
+        <div className="flex flex-col mb-4 md:flex-row md:items-center md:justify-center md:gap-16">
+          <div className="md:w-3/5">
             <Carousel
               images={tour.image_urls.map((el, i) => ({ id: i, src: el }))}
             />
           </div>
-          <div className="sidebar mt-4 md:w-[20%] md:flex-none">
+          <div className="sidebar mt-4 md:w-[25%] md:flex-none">
             <h2 className="font-semibold text-2xl md:text-4xl text-center md:text-end mb-4">
               {tour.name}
             </h2>
@@ -83,7 +83,7 @@ const TourDetails = () => {
       ) : (
         <h2 className="font-semibold text-3xl text-center">Loading ...</h2>
       )}
-      <Link to="/" title="Back" className="mt-4 absolute bottom-4 left-0">
+      <Link to="/" title="Back" className="mt-4 mb-8 absolute bottom-4 left-0">
         <NavButton btnDirection="left" bgColor="bg-green text-white" />
       </Link>
     </section>

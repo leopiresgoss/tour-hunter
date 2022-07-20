@@ -5,17 +5,17 @@ import AccessDenied from './AccessDenied';
 
 const ProtectedRoutes = ({ children, roles }) => {
   const location = useLocation();
-  const { isSignedIn, userData } = useSelector((state) => state.token);
+  const { userData } = useSelector((state) => state.token);
 
   const userHasRequiredRole = roles.includes(userData.role);
 
-  if (!isSignedIn) {
+  if (!localStorage.user) {
     return (
       <Navigate to="/users/sign_in" state={{ from: location }} />
     );
   }
 
-  if (isSignedIn && !userHasRequiredRole) {
+  if (localStorage.user && !userHasRequiredRole) {
     return (
       <AccessDenied role={userData.role} />
     );

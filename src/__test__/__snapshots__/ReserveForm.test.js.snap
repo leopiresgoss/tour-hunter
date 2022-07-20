@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Reserve Form renders correctly 1`] = `
+Array [
+  <div
+    className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80"
+  >
+    <img
+      alt="reserve-form-bg"
+      className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10"
+      src="https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg"
+    />
+    <div
+      className="flex flex-col mx-auto justify-center align-middle"
+    >
+      <h2
+        className="text-2xl mx-auto font-bold uppercase text-white mb-3 tracking-wide md:tracking-widest"
+      >
+        Book Tour Title
+      </h2>
+      <hr
+        className="border-gray w-1/2 mx-auto mb-3"
+      />
+      <p
+        className="mx-auto text-white text-center w-full p-2 md:w-3/5 mb-10 text-sm font-semibold leading-6  max-h-[100px] overflow-hidden py-1"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean facilisis sapien pharetra molestie vulputate. Curabitur condimentum blandit dui, rhoncus semper sapien dictum vitae. Etiam in mi ultrices, commodo ligula quis, efficitur erat. Donec at est scelerisque mi pharetra placerat congue a orci. Morbi porttitor non augue elementum gravida. Vivamus tempor scelerisque dignissim. Vestibulum rutrum magna at pellentesque facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam cursus venenatis odio in suscipit. Morbi vulputate sagittis consequat.
+    
+    Sed at blandit ex. Sed bibendum viverra erat vel venenatis. Maecenas euismod tempor sapien vitae pulvinar. Curabitur vitae porttitor ante, eu auctor dolor. Vestibulum at justo dui. Suspendisse quis velit venenatis, ornare odio et, maximus est. Nulla facilisi. Aenean viverra felis nec turpis consequat vestibulum.
+      </p>
+      <form
+        className="flex flex-col my-auto mx-auto gap-3 justify-center"
+        onSubmit={[Function]}
+      >
+        <div
+          className="flex gap-2"
+        >
+          <div
+            className="flex justify-center z-50"
+          >
+            <div
+              className="relative"
+            >
+              <button
+                className="dropdown-button"
+                id="package-button"
+                onClick={[Function]}
+                type="button"
+              >
+                Select Package
+                <svg
+                  aria-hidden="true"
+                  className="w-2 ml-2"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <ul
+                aria-labelledby="dropdownMenuButton1"
+                className="dropdown-items"
+                id="package"
+              >
+                <li
+                  className="dropdown-list-item"
+                  id={1}
+                  onClickCapture={[Function]}
+                >
+                  Standard
+                </li>
+                <li
+                  className="dropdown-list-item"
+                  id={2}
+                  onClickCapture={[Function]}
+                >
+                  VIP
+                </li>
+                <li
+                  className="dropdown-list-item"
+                  id={3}
+                  onClickCapture={[Function]}
+                >
+                  Luxury
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            className="flex justify-center z-50"
+          >
+            <div
+              className="relative"
+            >
+              <button
+                className="dropdown-button"
+                id="tour-date-button"
+                onClick={[Function]}
+                type="button"
+              >
+                Select Date
+                <svg
+                  aria-hidden="true"
+                  className="w-2 ml-2"
+                  data-icon="caret-down"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 320 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <ul
+                aria-labelledby="dropdownMenuButton1"
+                className="dropdown-items"
+                id="tour-date"
+              >
+                <li
+                  className="dropdown-list-item"
+                  id={1}
+                  onClickCapture={[Function]}
+                >
+                  2022-07-21
+                </li>
+                <li
+                  className="dropdown-list-item"
+                  id={2}
+                  onClickCapture={[Function]}
+                >
+                  2022-07-28
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <button
+          className="bg-gray text-green w-2/3 mt-4 mx-auto py-3 px-10 rounded-full font-semibold my-auto text-center"
+          type="submit"
+        >
+          <div
+            className="flex justify-center gap-2"
+          >
+            Reserve Tour
+          </div>
+        </button>
+      </form>
+    </div>
+  </div>,
+  <div
+    className="flex justify-center z-50"
+  >
+    <div
+      className="relative"
+    >
+      <button
+        className="dropdown-button"
+        id="package-button"
+        onClick={[Function]}
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          className="w-2 ml-2"
+          data-icon="caret-down"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          viewBox="0 0 320 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+      <ul
+        aria-labelledby="dropdownMenuButton1"
+        className="dropdown-items"
+        id="package"
+      >
+        <li
+          className="dropdown-list-item"
+          id={1}
+          onClickCapture={[Function]}
+        >
+          Standard
+        </li>
+        <li
+          className="dropdown-list-item"
+          id={2}
+          onClickCapture={[Function]}
+        >
+          VIP
+        </li>
+        <li
+          className="dropdown-list-item"
+          id={3}
+          onClickCapture={[Function]}
+        >
+          Luxury
+        </li>
+      </ul>
+    </div>
+  </div>,
+]
+`;

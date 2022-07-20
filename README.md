@@ -2,6 +2,9 @@
 
 > TourHunter is a project made by our 5-member group to give users options of tours around the world to reserve and the admins to add and delete said tours. General users can create an account to be able to reserve a tour and only admins will be able to create and delete tours. Feel free to fork this project and modify it for your own use!
 
+![image](https://user-images.githubusercontent.com/61767582/180072605-c5440703-4e0c-4ea9-8b33-83f56ef5f55d.png)
+
+
 ## Deployment
 
 You can find the app live [here](https://tourhunterapp.herokuapp.com

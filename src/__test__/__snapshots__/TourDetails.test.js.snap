@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details snapshot test Render correctly 1`] = `
+<section
+  className="flex flex-col min-h-[90vh] max-w-screen relative p-3 mt-12"
+  id="details"
+>
+  <h2
+    className="font-semibold text-3xl text-center"
+  >
+    Loading ...
+  </h2>
+  <a
+    className="mt-4 mb-8 absolute bottom-4 left-0"
+    href="/"
+    onClick={[Function]}
+    title="Back"
+  >
+    <button
+      className="bg-green text-white py-3 pl-8 pr-3 rounded-br-full rounded-tr-full font-semibold "
+      type="button"
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18.464 2.114a.998.998 0 0 0-1.033.063l-13 9a1.003 1.003 0 0 0 0 1.645l13 9A1 1 0 0 0 19 21V3a1 1 0 0 0-.536-.886zM17 19.091 6.757 12 17 4.909v14.182z"
+        />
+      </svg>
+    </button>
+  </a>
+</section>
+`;

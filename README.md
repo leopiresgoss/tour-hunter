@@ -13,9 +13,12 @@ You can find the back-end API [here](https://github.com/leopiresgoss/tour-hunter
 
 ## Built With
 
-- Languages: _**JavaScript, HTML & SCSS**_
-- Frameworks: _**React & Redux**_
-- Technologies used: _**Visual Studio Code**_
+- **JavaScript**
+- **Tailwind CSS**
+- **React 18.2**
+- **Redux Toolkit 1.8.1**
+- **React-Redux 8.0.1**
+- **Visual Studio Code**
 
 ## Getting Started
 
@@ -43,8 +46,6 @@ In the project directory, you can run:
 
 ## Authors
 
-### Front-end Team
-
 👤 **Mengstu Fentaw**
 
 - Github: [@mengiefen](https://github.com/mengiefen)
@@ -62,8 +63,6 @@ In the project directory, you can run:
 - GitHub: [@Thi-Ponce](https://github.com/Thi-Ponce)
 - Twitter: [@Thi_ponce](https://twitter.com/Thi_ponce)
 - LinkedIn: [@thiago-ponce](https://linkedin.com/in/thiago-ponce)
-
-### Back-end Team
 
 👤 **Behnam Aghaali**
 

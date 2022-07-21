@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Admin Add Tour should render the page 1`] = `
+<div
+  className="relative flex flex-col justify-center min-h-screen bg-green overflow-hidden bg-opacity-80"
+>
+  <div
+    className="w-full h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -z-10 bg-no-repeat bg-cover"
+    style={
+      Object {
+        "backgroundImage": "url(https://www.fanabc.com/english/wp-content/uploads/2021/08/Tourism-Danakil-Depression.jpg)",
+      }
+    }
+  />
+  <div
+    className="flex flex-col mx-auto justify-center align-middle"
+  >
+    <h2
+      className="text-2xl mx-auto font-bold uppercase text-white mb-3"
+    >
+      Add New Tour
+    </h2>
+    <hr
+      className="border-gray w-1/2 mx-auto mb-3"
+    />
+    <form
+      className="flex flex-col my-auto gap-3 justify-center"
+      onSubmit={[Function]}
+    >
+      <fieldset
+        className="flex flex-col gap-4 mt-4"
+      >
+        <input
+          className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+          name="name"
+          onChange={[Function]}
+          placeholder="Tour Name"
+          required={true}
+          type="text"
+        />
+        <input
+          className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+          name="location"
+          onChange={[Function]}
+          placeholder="Location"
+          required={true}
+          type="text"
+        />
+        <input
+          className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border placeholder:text-white"
+          min={0.01}
+          name="price"
+          onChange={[Function]}
+          placeholder="Price"
+          required={true}
+          step={0.01}
+          type="number"
+        />
+        <textarea
+          className="py-2 px-5 rounded-xl font-semibold bg-transparent text-white border-white border placeholder:text-white"
+          name="description"
+          onChange={[Function]}
+          placeholder="Description"
+          required={true}
+          rows="4"
+        />
+        <input
+          accept="image/*"
+          multiple="multiple"
+          name="images"
+          onInput={[Function]}
+          required={true}
+          type="file"
+        />
+        <div
+          className="flex flex-col gap-1"
+        >
+          <div>
+            <div
+              className="react-datepicker__input-container"
+            >
+              <input
+                className="py-2 px-5 rounded-full font-semibold bg-transparent text-white border-white border text-center w-full placeholder:text-white"
+                disabled={false}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                placeholder="Select a date"
+                readOnly={false}
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            className="bg-orange py-1 px-2 text-white rounded-full font-semibold my-auto text-center w-2/5 ml-auto"
+            onClick={[Function]}
+            type="button"
+          >
+            Add a date
+          </button>
+        </div>
+      </fieldset>
+      <button
+        className="bg-white text-green py-3 px-10 rounded-full font-semibold my-auto text-center"
+        type="submit"
+      >
+        Add Tour
+      </button>
+    </form>
+  </div>
+</div>
+`;

@@ -23,7 +23,6 @@ function Homepage() {
     (t) => t.visible === true || window.screen.width < 500,
   );
 
-  // const [startPostition, setStartPosition] = useState(0);
   useEffect(() => {
     dispatch(homepageTourAPI());
   }, []);
@@ -31,18 +30,21 @@ function Homepage() {
   return (
     <section className="mx-auto max-w-screen md:max-h-screen">
       <div className="mx-auto w-full flex flex-col p-10 mt-10 md:mt-0">
-        <h1 className="mx-auto font-bold text-2xl text-black md:mt-[20px]">
+        <h1 className="mx-auto font-bold text-3xl text-black md:mt-[20px]">
           Our Tours
         </h1>
         <p className="mx-auto text-gray-dark">Please select one of our tours</p>
       </div>
-      <div className="mx-auto w-full flex flex-col gap-24 md:flex-row  md:justify-center md:items-center md:min-h-[70vh] md:gap-0" style={{ maxWidth: '1028px' }}>
+      <div
+        className="mx-auto w-full flex flex-col gap-4 md:flex-row
+       md:justify-center md:items-center md:min-h-[70vh] md:gap-0"
+        style={{ maxWidth: '1028px' }}
+      >
         <div className="hidden md:block">
           <button
             onClick={() => {
               if (startPoint > 0) {
                 dispatch(updateLeftTours());
-                // setStartPosition(startPoint - 1);
               }
             }}
             type="button"
@@ -77,7 +79,6 @@ function Homepage() {
             onClick={() => {
               if (startPoint < tours.length - 3) {
                 dispatch(updateRightTours());
-                // setStartPosition(startPostition + 1);
               }
             }}
             type="button"
